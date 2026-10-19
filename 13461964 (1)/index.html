@@ -853,63 +853,139 @@
 </style>
 
 <style id="hp-frame-clean">
-.barbox .bar{
-  position:relative !important;
-  height:42px !important;
-  min-height:42px !important;
-  background:transparent !important;
-  border:0 !important;
-  border-radius:0 !important;
-  box-shadow:none !important;
-  overflow:hidden !important;
+/* Fantasy 3D HP Bar & Combat Badges */
+.barbox {
+  position: absolute !important;
+  text-align: center !important;
+  pointer-events: none !important;
+  z-index: 20 !important;
 }
-.barbox .bar::before{
-  content:'' !important;
-  position:absolute !important;
-  inset:0 !important;
-  background:url('images/ui/ui_hp_frame.webp') center/100% 100% no-repeat !important;
-  z-index:1 !important;
-  pointer-events:none !important;
+.barbox .name {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  margin: 0 auto 5px !important;
+  padding: 4px 16px !important;
+  border-radius: 99px !important;
+  font-size: 13px !important;
+  font-weight: 900 !important;
+  letter-spacing: 0.6px !important;
+  text-transform: uppercase !important;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.7), inset 0 1px 1px rgba(255,255,255,0.25) !important;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.9) !important;
 }
-.barbox .bar .fill{
-  position:absolute !important;
-  left:1.2% !important;
-  top:16% !important;
-  height:68% !important;
-  max-width:97.6% !important;
-  margin:0 !important;
-  border:0 !important;
-  border-radius:5px !important;
-  overflow:hidden !important;
-  z-index:2 !important;
-  transition:width .15s !important;
+.barbox.hero .name {
+  background: linear-gradient(180deg, #183325 0%, #0a1711 100%) !important;
+  border: 1.5px solid #22c55e !important;
+  color: #86efac !important;
 }
-.barbox .bar .fill.hp{
-  background:linear-gradient(90deg,#22c55e,#86efac) !important;
+.barbox.foe .name {
+  background: linear-gradient(180deg, #38151f 0%, #17070b 100%) !important;
+  border: 1.5px solid #ef4444 !important;
+  color: #fca5a5 !important;
 }
-.barbox .bar .fill.ehp{
-  background:linear-gradient(90deg,#ef4444,#fb7185) !important;
+.barbox .bar {
+  position: relative !important;
+  height: 28px !important;
+  min-height: 28px !important;
+  border-radius: 14px !important;
+  background: #080d1a !important;
+  padding: 2px !important;
+  overflow: hidden !important;
 }
-.barbox .bar .fill::after{
-  content:'' !important;
-  position:absolute !important;
-  inset:0 !important;
-  background:linear-gradient(180deg,#ffffff28,transparent 45%,#00000018) !important;
-  pointer-events:none !important;
+.barbox.hero .bar {
+  border: 2px solid #22c55e !important;
+  box-shadow: 0 0 0 1.5px #15803d, 0 6px 16px rgba(0,0,0,0.85), inset 0 2px 5px rgba(0,0,0,0.9), 0 0 14px rgba(34, 197, 94, 0.35) !important;
 }
-.barbox .hptext{
-  z-index:3 !important;
+.barbox.foe .bar {
+  border: 2px solid #ef4444 !important;
+  box-shadow: 0 0 0 1.5px #991b1b, 0 6px 16px rgba(0,0,0,0.85), inset 0 2px 5px rgba(0,0,0,0.9), 0 0 14px rgba(239, 68, 68, 0.35) !important;
+}
+.barbox .bar::before {
+  content: none !important;
+}
+.barbox .bar .fill {
+  position: absolute !important;
+  left: 2px !important;
+  top: 2px !important;
+  bottom: 2px !important;
+  height: calc(100% - 4px) !important;
+  border-radius: 10px !important;
+  max-width: calc(100% - 4px) !important;
+  margin: 0 !important;
+  border: 0 !important;
+  overflow: hidden !important;
+  z-index: 2 !important;
+  transition: width 0.22s cubic-bezier(0.2, 0.8, 0.2, 1) !important;
+}
+.barbox .bar .fill.hp {
+  background: linear-gradient(180deg, #86efac 0%, #22c55e 38%, #16a34a 68%, #14532d 100%) !important;
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.6) !important;
+}
+.barbox .bar .fill.ehp {
+  background: linear-gradient(180deg, #fca5a5 0%, #ef4444 38%, #dc2626 68%, #7f1d1d 100%) !important;
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.6) !important;
+}
+.barbox .bar .fill::after {
+  content: '' !important;
+  position: absolute !important;
+  inset: 0 !important;
+  background: linear-gradient(180deg, rgba(255,255,255,0.55) 0%, rgba(255,255,255,0.08) 48%, rgba(0,0,0,0.1) 49%, rgba(0,0,0,0.25) 100%) !important;
+  pointer-events: none !important;
+}
+.barbox .hptext {
+  position: absolute !important;
+  inset: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  font-size: 13px !important;
+  font-weight: 1000 !important;
+  letter-spacing: 0.5px !important;
+  color: #ffffff !important;
+  text-shadow: 0 1px 2px #000, 0 0 4px #000, 0 0 8px #000 !important;
+  z-index: 5 !important;
+  line-height: 1 !important;
+}
+.enemy-combat-info {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  align-items: center !important;
+  margin-top: 5px !important;
+}
+.enemy-combat-info span.combat-badge,
+.enemy-combat-info span {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 5px !important;
+  padding: 3px 9px !important;
+  border-radius: 99px !important;
+  background: rgba(9, 14, 26, 0.92) !important;
+  border: 1px solid rgba(255,255,255,0.14) !important;
+  backdrop-filter: blur(6px) !important;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.6) !important;
+  font-size: 12px !important;
+  font-weight: 1000 !important;
+  line-height: 1.2 !important;
+  white-space: nowrap !important;
+}
+.hero-combat-info .hero-hit { color: #fef08a !important; border-color: rgba(254, 240, 138, 0.35) !important; }
+.hero-combat-info .hero-timer { color: #93c5fd !important; border-color: rgba(147, 197, 253, 0.35) !important; min-width: 50px !important; justify-content: center !important; }
+.enemy-combat-info .enemy-hit { color: #fca5a5 !important; border-color: rgba(252, 165, 165, 0.35) !important; }
+.enemy-combat-info .enemy-timer { color: #fde047 !important; border-color: rgba(253, 224, 71, 0.35) !important; min-width: 50px !important; justify-content: center !important; }
+.enemy-combat-info .enemy-timer.urgent { color: #f87171 !important; border-color: #ef4444 !important; animation: urgentPulse .6s ease-in-out infinite alternate !important; }
+@keyframes urgentPulse { 0% { transform: scale(1); box-shadow: 0 0 4px #ef4444; } 100% { transform: scale(1.08); box-shadow: 0 0 12px #ef4444; } }
+.combat-svg {
+  width: 14px !important;
+  height: 14px !important;
+  flex-shrink: 0 !important;
 }
 @media(max-width:850px){
-  .barbox .bar{
-    height:38px !important;
-    min-height:38px !important;
-  }
-  .barbox .bar .fill{
-    left:1.2% !important;
-    top:16% !important;
-    height:68% !important;
-    max-width:97.6% !important;
+  .barbox .bar {
+    height: 24px !important;
+    min-height: 24px !important;
   }
 }
 </style>
@@ -1572,184 +1648,227 @@
   padding:20px !important;
 }
 #settingsModal .modalbox{
-  width:min(480px,92vw) !important;
-  min-height:280px !important;
-  aspect-ratio:1200/700 !important;
+  width:min(440px,92vw) !important;
+  min-height:auto !important;
+  aspect-ratio:auto !important;
   box-sizing:border-box !important;
-  background:transparent url("./images/ui/ui_death_panel.webp") center/100% 100% no-repeat !important;
-  border:0 !important;
-  border-radius:0 !important;
-  box-shadow:none !important;
-  padding:42px 42px 34px !important;
+  background:linear-gradient(180deg, #24160e 0%, #160e08 100%) !important;
+  border:2px solid #b1843c !important;
+  border-radius:20px !important;
+  box-shadow:0 25px 70px rgba(0,0,0,0.95), inset 0 1px 0 rgba(255,255,255,0.12) !important;
+  padding:26px 28px !important;
   display:flex !important;
   flex-direction:column !important;
   justify-content:center !important;
   text-align:center !important;
 }
 #settingsModal .modalbox h2{
-  margin:0 0 18px !important;
-  text-shadow:0 2px 3px #0008 !important;
+  margin:0 0 16px !important;
+  font-size:20px !important;
+  color:#fef3c7 !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:8px !important;
+  text-shadow:0 2px 4px #000 !important;
 }
 #settingsModal .settingrow{
   width:100% !important;
-  padding:10px 0 !important;
-  border-bottom:1px solid #ffffff18 !important;
-  font-size:16px !important;
-  font-weight:900 !important;
-  text-shadow:0 2px 3px #000 !important;
-  display:grid !important;
-  grid-template-columns:minmax(0,1fr) 190px minmax(0,1fr) !important;
+  padding:12px 2px !important;
+  border-bottom:1px solid rgba(177,132,60,0.2) !important;
+  display:flex !important;
+  justify-content:space-between !important;
   align-items:center !important;
-  column-gap:10px !important;
+  box-sizing:border-box !important;
 }
 #settingsModal .settingrow > span{
-  grid-column:1 !important;
-  justify-self:start !important;
   display:flex !important;
   align-items:center !important;
-  gap:6px !important;
+  gap:8px !important;
+  font-size:14px !important;
+  font-weight:800 !important;
+  color:#f3e5d7 !important;
   white-space:nowrap !important;
+  text-shadow:0 1px 2px #000 !important;
 } 
-#settingsModal .settingrow > .toggle{
-  grid-column:2 !important;
-  justify-self:center !important;
+#settingsModal .toggle{
+  width:115px !important;
+  min-width:115px !important;
+  max-width:115px !important;
+  height:36px !important;
+  min-height:36px !important;
+  padding:0 !important;
+  border-radius:99px !important;
+  border:1.5px solid #5a381f !important;
+  background:#1d1109 !important;
+  color:#a89282 !important;
+  font-weight:900 !important;
+  font-size:13px !important;
+  cursor:pointer !important;
+  transition:all .2s ease !important;
+  box-shadow:inset 0 2px 4px rgba(0,0,0,0.5) !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  text-shadow:0 1px 2px #000 !important;
 }
-#settingsModal .toggle,
-#settingsModal .actions button{
-  width:190px !important;
-  min-width:190px !important;
-  max-width:190px !important;
-  height:54px !important;
-  min-height:54px !important;
-  padding:8px 12px !important;
-  border:0 !important;
-  border-radius:0 !important;
-  background:transparent url("./images/ui/ui_button_main.webp") center/100% 100% no-repeat !important;
-  color:#fff3c4 !important;
-  font-weight:1000 !important;
-  line-height:1.05 !important;
-  text-shadow:0 2px 3px #2b1407,0 0 5px #000 !important;
-  box-shadow:none !important;
-}
-#settingsModal .toggle:active,
-#settingsModal .actions button:active{
-  filter:brightness(.92) !important;
-  transform:translateY(2px) !important;
+#settingsModal .toggle.active{
+  background:linear-gradient(180deg, #22c55e, #15803d) !important;
+  border-color:#4ade80 !important;
+  color:#ffffff !important;
+  box-shadow:0 0 12px rgba(34,197,94,0.45), inset 0 1px 1px rgba(255,255,255,0.4) !important;
 }
 #settingsModal .actions{
+  display:flex !important;
   justify-content:center !important;
   align-items:center !important;
-  flex-wrap:nowrap !important;
-  margin-top:8px !important;
-  transform:translateY(-12px) !important;
+  margin-top:16px !important;
+}
+#settingsModal .actions button{
+  min-height:44px !important;
+  height:44px !important;
+  width:160px !important;
+  min-width:160px !important;
+  max-width:160px !important;
+  padding:0 !important;
+  border:0 !important;
+  box-shadow:none !important;
+  color:#fff3c4 !important;
+  background:transparent url('images/ui/ui_button_main.webp') center/100% 100% no-repeat !important;
+  font-weight:900 !important;
+  font-size:13px !important;
+  text-shadow:0 1px 2px #000 !important;
+  cursor:pointer !important;
+  transition:filter .15s ease, transform .1s ease !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+}
+#settingsModal .actions button:hover{
+  filter:brightness(1.12) !important;
+}
+#settingsModal .actions button:active{
+  transform:translateY(1px) scale(0.98) !important;
 }
 @media(max-width:600px){
   #settingsModal{padding:10px !important}
-  #settingsModal .modalbox{width:min(480px,94vw) !important;min-height:270px !important;padding:38px 28px 30px !important}
-  #settingsModal .settingrow{font-size:14px !important;grid-template-columns:minmax(0,1fr) 174px minmax(0,1fr) !important}
-  #settingsModal .toggle,
-  #settingsModal .actions button{width:174px !important;min-width:174px !important;max-width:174px !important;height:50px !important;min-height:50px !important;font-size:12px !important}
+  #settingsModal .modalbox{width:min(440px,94vw) !important;padding:20px 18px !important}
+  #settingsModal .settingrow{font-size:13px !important;}
+  #settingsModal .toggle{width:95px !important;min-width:95px !important;height:34px !important;font-size:12px !important}
+  #settingsModal .actions button{width:140px !important;min-width:140px !important;height:40px !important;font-size:12px !important}
 }
 </style>
 
-<style id="hud-upgrade-frame-test">
-/* HUD test: reuse the existing upgrade-card artwork for fish and level.
-   Only HUD positioning/skin is changed; gameplay is untouched. */
+<style id="battlehud-rounded-frames">
+/* Separate, beautiful rounded frames for fish, caviar, and level */
 .battlehud{
   left:14px !important;
   right:auto !important;
   top:14px !important;
-  z-index:12 !important;
+  gap:10px !important;
   display:flex !important;
   flex-direction:row !important;
-  gap:8px !important;
   align-items:center !important;
+  z-index:25 !important;
 }
-.battlehud .hudxp{order:1 !important;}
-.battlehud .hudpill:not(.hudxp){order:2 !important;}
+.battlehud #fishPill{order:1 !important;}
+.battlehud #caviarPill{order:2 !important;}
+.battlehud .hudxp{order:3 !important;}
 .battlehud .hudpill,
 .battlehud .hudxp{
-  background-image:url('images/ui/ui_upgrade_card.webp') !important;
-  background-size:100% 100% !important;
-  background-repeat:no-repeat !important;
-  background-position:center !important;
-  border:0 !important;
-  border-radius:0 !important;
-  box-shadow:none !important;
-  width:150px !important;
-  min-width:150px !important;
-  max-width:150px !important;
-  height:58px !important;
-  min-height:58px !important;
-  max-height:58px !important;
-  padding:10px 14px 9px !important;
-}
-.battlehud .hudpill b{font-size:16px !important;}
-.battlehud .hudpill small{font-size:9px !important;}
-.battlehud .fish-icon{font-size:18px !important;}
-.battlehud .hudxp .xpbar{height:6px !important;margin-top:3px !important;}
-.locbadge{display:none !important;}
-@media(max-width:850px){
-  .battlehud{left:10px !important;top:10px !important;gap:6px !important;}
-  .battlehud .hudpill, .battlehud .hudxp{
-    width:145px !important;min-width:145px !important;max-width:145px !important;
-    height:56px !important;min-height:56px !important;max-height:56px !important;
-    padding:9px 12px 8px !important;
-  }
-}
-</style>
-<style id="hud-frame-clean-final">
-/* Clean HUD frames: the PNG is the only visual frame; no old blue CSS box behind it. */
-.battlehud .hudpill,
-.battlehud .hudxp{
-  background-color:transparent !important;
-  border:0 !important;
-  box-shadow:none !important;
-  border-radius:0 !important;
-  height:54px !important;
-  min-height:54px !important;
-  max-height:54px !important;
-  padding:8px 14px 7px !important;
-}
-@media(max-width:850px){
-  .battlehud .hudpill, .battlehud .hudxp{
-    height:42px !important;
-    min-height:42px !important;
-    max-height:52px !important;
-    padding:8px 12px 7px !important;
-  }
-}
-</style>
-<style id="hud-final-small-tune">
-/* Final HUD tune: remove XP bar and lift the small captions slightly. */
-.battlehud .hudxp .xpbar{display:none !important;}
-.battlehud .hudpill small{transform:translateY(-2px) !important;display:block;}
-.battlehud .hudpill b{transform:translateY(-1px) !important;}
-.battlehud .fish-value{display:flex !important;align-items:center !important;justify-content:center !important;gap:4px !important;}
-.battlehud .fish-icon{order:2 !important;}
-.battlehud .hudpill{padding-bottom:10px !important;}
-</style>
-<style id="hud-caption-alignment">
-/* Align the two HUD captions without changing the painted frame geometry. */
-.battlehud .hudpill{
+  background-image:none !important;
+  background:linear-gradient(180deg, #26160e 0%, #150d07 100%) !important;
+  border:1.5px solid #a67c38 !important;
+  border-radius:14px !important;
+  box-shadow:0 4px 12px rgba(0,0,0,0.65), inset 0 1px 0 rgba(255,235,185,0.22), inset 0 -1px 0 rgba(0,0,0,0.5) !important;
+  width:126px !important;
+  min-width:126px !important;
+  max-width:126px !important;
+  flex:0 0 126px !important;
+  height:52px !important;
+  min-height:52px !important;
+  max-height:52px !important;
+  padding:5px 8px !important;
+  box-sizing:border-box !important;
   display:flex !important;
   flex-direction:column !important;
-  justify-content:center !important;
   align-items:center !important;
-  padding-top:8px !important;
-  padding-bottom:8px !important;
+  justify-content:center !important;
+  transition:border-color .15s ease, box-shadow .15s ease !important;
+}
+.battlehud .hudpill:hover{
+  border-color:#d4a04d !important;
+  box-shadow:0 4px 16px rgba(0,0,0,0.75), inset 0 1px 0 rgba(255,235,185,0.3) !important;
 }
 .battlehud .hudpill b{
+  font-size:15px !important;
+  font-weight:900 !important;
+  line-height:1.15 !important;
+  margin:0 !important;
   transform:none !important;
-  margin:0 0 2px !important;
+  color:#fef08a !important;
+  text-shadow:0 1px 2px #000 !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:4px !important;
 }
 .battlehud .hudpill small{
+  font-size:10px !important;
+  font-weight:700 !important;
+  line-height:1.1 !important;
+  margin:2px 0 0 !important;
   transform:none !important;
-  margin:0 !important;
-  line-height:1.05 !important;
+  color:#d4bda8 !important;
+  letter-spacing:0.25px !important;
+  text-shadow:0 1px 2px #000 !important;
 }
 .battlehud .fish-value{
-  flex:0 0 auto !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:5px !important;
+  color:#fef08a !important;
+}
+.battlehud .icon-fish-svg{
+  width:17px !important;
+  height:17px !important;
+  flex-shrink:0 !important;
+  filter:drop-shadow(0 1px 2px rgba(0,0,0,0.5)) !important;
+}
+.battlehud .caviar-value{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:4px !important;
+  color:#fca5a5 !important;
+}
+.battlehud .caviar-icon{
+  display:inline-flex !important;
+  align-items:center !important;
+  line-height:1 !important;
+}
+.battlehud .hudxp b{
+  color:#fde68a !important;
+}
+.battlehud .hudxp small{
+  color:#cbd5e1 !important;
+}
+.battlehud .hudxp .xpbar{
+  display:none !important;
+}
+.locbadge{display:none !important;}
+@media(max-width:850px){
+  .battlehud{left:8px !important;top:8px !important;gap:6px !important;}
+  .battlehud .hudpill, .battlehud .hudxp{
+    width:98px !important;min-width:98px !important;max-width:98px !important;
+    flex:0 0 98px !important;
+    height:44px !important;min-height:44px !important;max-height:44px !important;
+    padding:3px 4px !important;
+    border-radius:11px !important;
+  }
+  .battlehud .hudpill b{font-size:12px !important;}
+  .battlehud .hudpill small{font-size:8.5px !important;margin-top:1px !important;}
 }
 </style>
 <style id="location-buttons-image-test">
@@ -3380,10 +3499,10 @@ html,body{background:#21140d !important}
 </style>
 <style id="vkplay-caviar-and-bank">
 .battlehud{
-  left:10px !important;
+  left:14px !important;
   right:auto !important;
-  top:10px !important;
-  gap:6px !important;
+  top:14px !important;
+  gap:10px !important;
   display:flex !important;
   flex-direction:row !important;
   align-items:center !important;
@@ -3392,19 +3511,29 @@ html,body{background:#21140d !important}
 .battlehud #fishPill{order:1 !important;}
 .battlehud #caviarPill{order:2 !important;}
 .battlehud .hudxp{order:3 !important;}
-.battlehud .hudpill{
-  flex:0 0 130px !important;
-  width:130px !important;
-  min-width:130px !important;
-  max-width:130px !important;
-  height:54px !important;
-  min-height:54px !important;
-  max-height:54px !important;
-  padding:6px 8px !important;
+.battlehud .hudpill,
+.battlehud .hudxp{
+  flex:0 0 126px !important;
+  width:126px !important;
+  min-width:126px !important;
+  max-width:126px !important;
+  height:52px !important;
+  min-height:52px !important;
+  max-height:52px !important;
+  padding:5px 8px !important;
   box-sizing:border-box !important;
+  background-image:none !important;
+  background:linear-gradient(180deg, #26160e 0%, #150d07 100%) !important;
+  border:1.5px solid #a67c38 !important;
+  border-radius:14px !important;
+  box-shadow:0 4px 12px rgba(0,0,0,0.65), inset 0 1px 0 rgba(255,235,185,0.22), inset 0 -1px 0 rgba(0,0,0,0.5) !important;
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
 }
-.battlehud .hudpill b{font-size:15px !important;display:flex;align-items:center;justify-content:center;gap:3px;}
-.battlehud .hudpill small{font-size:9px !important;color:#cbd5e1 !important;}
+.battlehud .hudpill b{font-size:15px !important;font-weight:900 !important;display:flex;align-items:center;justify-content:center;gap:4px;color:#fef08a !important;}
+.battlehud .hudpill small{font-size:10px !important;font-weight:700 !important;color:#d4bda8 !important;letter-spacing:0.25px !important;margin-top:1px !important;}
 .caviar-value{display:flex;align-items:center;justify-content:center;gap:3px;color:#fca5a5;}
 .caviar-icon{font-size:12px;line-height:1;}
 .caviar-plus{
@@ -3598,6 +3727,203 @@ html,body{background:#21140d !important}
   background:rgba(255,255,255,0.06);
   border:1px solid rgba(255,255,255,0.12);
 }
+
+/* --- FANTASY UI POLISH & JUICE STYLES --- */
+.icon-caviar {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  vertical-align: -2px;
+  margin: 0 2px;
+  background: radial-gradient(circle at 35% 28%, #ffffff 0%, #ff8a80 20%, #ef4444 55%, #991b1b 85%, #450a0a 100%);
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.8), inset 0 -2px 3px rgba(0,0,0,0.5), inset 0 1px 2px rgba(255,255,255,0.7);
+  position: relative;
+  flex-shrink: 0;
+}
+.hudcaviar .icon-caviar {
+  width: 17px;
+  height: 17px;
+  vertical-align: -3px;
+}
+.icon-fish-svg {
+  display: inline-block;
+  vertical-align: -4px;
+  margin-right: 4px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.5));
+}
+
+/* Searching lens */
+.searching-icon {
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  pointer-events: none;
+  z-index: 15;
+  display: none;
+}
+.search-lens-wrap {
+  position: relative;
+  width: 84px;
+  height: 84px;
+  margin: 0 auto;
+}
+.search-lens-svg {
+  width: 80px;
+  height: 80px;
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,0.7));
+  animation: searchFloat 2s ease-in-out infinite;
+}
+@keyframes searchFloat {
+  0%, 100% { transform: translate(0, 0) rotate(-6deg); }
+  50% { transform: translate(6px, -10px) rotate(8deg); }
+}
+.search-radar-ping {
+  position: absolute;
+  left: 17px;
+  top: 17px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 2px solid rgba(251, 191, 36, 0.75);
+  animation: radarPing 1.8s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+  pointer-events: none;
+}
+@keyframes radarPing {
+  0% { transform: scale(0.6); opacity: 1; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+.search-text-sub {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 900;
+  color: #fef08a;
+  text-shadow: 0 2px 6px #000, 0 0 10px rgba(251, 191, 36, 0.5);
+  letter-spacing: 0.5px;
+  animation: searchGlow 1.5s ease-in-out infinite alternate;
+}
+@keyframes searchGlow {
+  0% { opacity: 0.85; }
+  100% { opacity: 1; text-shadow: 0 2px 6px #000, 0 0 16px rgba(251, 191, 36, 0.9); }
+}
+
+/* Attack Button */
+.attack {
+  cursor: pointer;
+  transition: transform 0.1s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.1s, filter 0.1s;
+  animation: attackBtnPulse 2.4s ease-in-out infinite;
+}
+@keyframes attackBtnPulse {
+  0%, 100% { box-shadow: 0 8px 0 #8a4d0b, 0 14px 25px rgba(0,0,0,0.5); }
+  50% { box-shadow: 0 8px 0 #8a4d0b, 0 14px 30px rgba(245, 158, 11, 0.45); }
+}
+.attack.surrender {
+  animation: none !important;
+}
+.attack:hover:not(:disabled) {
+  filter: brightness(1.08);
+}
+.attack:active:not(:disabled) {
+  transform: translateX(-50%) translateY(4px) scale(0.97) !important;
+  box-shadow: 0 4px 0 #8a4d0b, 0 6px 12px rgba(0,0,0,0.6) !important;
+}
+.attack.surrender:active:not(:disabled) {
+  box-shadow: 0 4px 0 #991b1b, 0 6px 12px rgba(0,0,0,0.6) !important;
+}
+
+/* Floating combat damage */
+.float {
+  position: absolute;
+  z-index: 45;
+  font-size: 26px;
+  font-weight: 1000;
+  pointer-events: none;
+  letter-spacing: 0.5px;
+  user-select: none;
+  filter: drop-shadow(0 3px 6px rgba(0,0,0,0.9));
+}
+.float.dmg {
+  color: #ffffff;
+  text-shadow: 0 0 10px rgba(251, 191, 36, 0.7), 0 2px 4px #000;
+  animation: floatDmg 0.85s cubic-bezier(0.2, 0.8, 0.25, 1) forwards;
+}
+.float.crit {
+  color: #fef08a;
+  font-size: 34px;
+  text-shadow: 0 0 16px rgba(239, 68, 68, 0.95), 0 0 25px rgba(245, 158, 11, 0.85), 0 3px 6px #000;
+  animation: floatCrit 0.9s cubic-bezier(0.18, 0.89, 0.32, 1.28) forwards;
+}
+@keyframes floatDmg {
+  0% { transform: translate(-50%, 0) scale(0.6); opacity: 0; }
+  15% { transform: translate(-50%, -15px) scale(1.15); opacity: 1; }
+  35% { transform: translate(-50%, -28px) scale(1.0); opacity: 1; }
+  100% { transform: translate(-50%, -75px) scale(0.85); opacity: 0; }
+}
+@keyframes floatCrit {
+  0% { transform: translate(-50%, 0) scale(0.4) rotate(-6deg); opacity: 0; }
+  20% { transform: translate(-50%, -22px) scale(1.35) rotate(3deg); opacity: 1; }
+  45% { transform: translate(-50%, -36px) scale(1.15) rotate(0deg); opacity: 1; }
+  100% { transform: translate(-50%, -85px) scale(0.9) rotate(-2deg); opacity: 0; }
+}
+
+/* Settings Modal */
+#settingsModal .modalbox {
+  background: linear-gradient(180deg, #24160e 0%, #160e08 100%) !important;
+  border: 2px solid #b1843c !important;
+  box-shadow: 0 25px 70px rgba(0,0,0,0.95), inset 0 1px 0 rgba(255,255,255,0.12) !important;
+  border-radius: 20px !important;
+}
+#settingsModal h2 {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 8px !important;
+  color: #fef3c7 !important;
+  font-size: 20px !important;
+  margin-bottom: 16px !important;
+}
+.settingrow {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  padding: 12px 6px !important;
+  border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+}
+.setting-label {
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  font-size: 14px !important;
+  font-weight: 800 !important;
+  color: #e2e8f0 !important;
+}
+.setting-icon-svg {
+  flex-shrink: 0;
+}
+.toggle {
+  min-width: 120px !important;
+  padding: 8px 16px !important;
+  border-radius: 99px !important;
+  font-weight: 900 !important;
+  font-size: 13px !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 6px !important;
+  border: 1px solid rgba(255,255,255,0.15) !important;
+  background: #1e293b !important;
+  color: #94a3b8 !important;
+}
+.toggle.active {
+  background: linear-gradient(180deg, #22c55e, #16a34a) !important;
+  color: #ffffff !important;
+  border-color: #4ade80 !important;
+  box-shadow: 0 0 12px rgba(34, 197, 94, 0.4) !important;
+}
 </style>
 </head><body>
 
@@ -3614,9 +3940,7 @@ html,body{background:#21140d !important}
 </div>
 
 <div id="app"><div id="game"><header class="top"></header><div class="toast" id="toast"></div><main class="screen">
-<section id="battleView" class="view active"><div class="battlePage"><div class="battle"><div class="scene" id="scene"><button class="iconbtn scene-settings" id="settingsBtn" aria-label="Настройки"></button><div class="battlehud"><div class="hudpill" id="fishPill"><b class="fish-value"><span id="fish">0</span></b><small>рыбки</small></div><div class="hudpill hudcaviar" id="caviarPill"><b class="caviar-value"><span class="caviar-icon">🔴</span><span id="caviar">0</span><button class="caviar-plus" id="openBankBtn" title="Пополнить икринки">+</button></b><small>икринки</small></div><div class="hudpill hudxp"><b id="heroLevel">Ур. 1</b><small id="heroXpText">XP 0/100</small><div class="xpbar"><i id="heroXpBar" style="width:0%"></i></div></div></div><div class="locbadge"><b id="locName"></b><small id="locHint"></small></div><div class="combatmsg" id="combatMsg">Нажмите «Найти врага»</div><div class="barbox hero"><div class="name" id="heroName"></div><div class="bar"><div class="fill hp" id="heroHp"></div><div class="hptext" id="heroHpText">0/0</div></div><div class="enemy-combat-info hero-combat-info"><span class="hero-hit" id="heroDamageInfo">⚔️ —</span><span class="hero-timer" id="heroTimerInfo">⏱ —</span></div></div><div class="barbox foe" id="enemyBox"><div class="name" id="enemyName">—</div><div class="bar"><div class="fill ehp" id="enemyHp"></div><div class="hptext" id="enemyHpText">0/0</div></div><div class="enemy-combat-info"><span class="enemy-hit" id="enemyDamageInfo">⚔️ —</span><span class="enemy-timer" id="enemyTimerInfo">⏱ —</span></div></div><div class="fighters"><img id="heroImg" class="fighter" src=""><div id="searchingIcon" class="searching-icon">🔎</div><img id="enemyImg" class="fighter foe" src=""></div><button class="attack" id="attackBtn">Найти врага</button><div class="modal" id="deathModal"><div class="modalbox deathbox"><h2>Кот повержен</h2><p id="deathText"></p><div class="actions"><button id="freeDeath">Сдаться бесплатно</button><button class="primary" id="caviarRevive">Возродиться (2 🔴)</button></div></div></div><div class="modal" id="bankModal"><div class="modalbox bankbox"><h2>Лавка купца: Икринки</h2><p>Икринки позволяют возрождаться в бою без потери рыбы, мгновенно открывать сундуки и покупать редкие артефакты.</p><div class="bank-grid"><div class="bank-card"><div class="bank-amount">50 🔴</div><div class="bank-title">Горсть икринок</div><button class="buy primary" onclick="buyCaviarPack(50, 99)">99 ₽</button></div><div class="bank-card featured"><div class="bank-badge">Выгодно</div><div class="bank-amount">150 🔴</div><div class="bank-title">Мешочек икринок</div><button class="buy primary" onclick="buyCaviarPack(150, 199)">199 ₽</button></div><div class="bank-card"><div class="bank-amount">450 🔴</div><div class="bank-title">Сундук икринок</div><button class="buy primary" onclick="buyCaviarPack(450, 499)">499 ₽</button></div></div><div class="actions" style="margin-top:10px"><button id="closeBank">Закрыть</button></div></div></div><div class="modal" id="victoryModal"><div class="modalbox deathbox victorybox"><h2>ПОБЕДА!</h2><p>Кошачий Король повержен!<br>Ты прошёл весь путь и завершил своё приключение.<br><br><b>Новая игра+ доступна!</b><br>Начни новый цикл с повышенной сложностью<br>или вернись в текущий мир и продолжи игру.<br><br><span class="victory-note">Начать Новую игру+ можно в любой момент через раздел «Возвышение».</span></p><div class="actions"><button id="victoryReturn">Вернуться</button><button class="primary" id="victoryNg">Новая игра+</button></div></div></div><div class="modal" id="settingsModal"><div class="modalbox"><h2>⚙️ Настройки</h2><div class="settingrow"><span>🔊 Звуки</span><button class="toggle" id="soundToggle">Включены</button></div>
-<div class="settingrow"><span>🎵 Музыка</span><button class="toggle" id="musicToggle">Включена</button></div>
-<div class="actions" style="margin-top:14px"><button id="closeSettings">Закрыть</button></div></div></div></div><aside class="side"><section class="main-upgrades" id="mainUpgrades"><div class="upgrade-title"><h2>⚔️ Улучшения</h2></div><div id="mainUpgradeContent"></div></section><div class="progress"><b id="progressTitle">🗺️ Прогресс пути</b><div class="mini" id="progressSub"></div><div class="req" id="requirements"></div></div><div class="mini" style="margin-bottom:6px">Локации</div><div class="locs" id="locationsList"></div></aside></div></div></section>
+<section id="battleView" class="view active"><div class="battlePage"><div class="battle"><div class="scene" id="scene"><button class="iconbtn scene-settings" id="settingsBtn" aria-label="Настройки"></button><div class="battlehud"><div class="hudpill" id="fishPill"><b class="fish-value"><svg class="icon-fish-svg" viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M2 12c3.5-5 9-6 15-4 1.5-1.5 3-2 5-2-1 2.5-1 4.5 0 6-1 1.5-1 3.5 0 6-2 0-3.5-.5-5-2-6 2-11.5 1-15-4z" fill="url(#hudFishGrad)" stroke="#b45309" stroke-width="1"/><circle cx="6" cy="11" r="1" fill="#fff"/><defs><linearGradient id="hudFishGrad" x1="2" y1="6" x2="22" y2="18" gradientUnits="userSpaceOnUse"><stop stop-color="#fde047"/><stop offset="0.6" stop-color="#f59e0b"/><stop offset="1" stop-color="#d97706"/></linearGradient></defs></svg><span id="fish">0</span></b><small>рыбки</small></div><div class="hudpill hudcaviar" id="caviarPill"><b class="caviar-value"><span class="caviar-icon"><span class="icon-caviar"></span></span><span id="caviar">0</span><button class="caviar-plus" id="openBankBtn" title="Пополнить икринки">+</button></b><small>икринки</small></div><div class="hudpill hudxp"><b id="heroLevel">Ур. 1</b><small id="heroXpText">XP 0/100</small><div class="xpbar"><i id="heroXpBar" style="width:0%"></i></div></div></div><div class="locbadge"><b id="locName"></b><small id="locHint"></small></div><div class="combatmsg" id="combatMsg">Нажмите «Найти врага»</div><div class="barbox hero"><div class="name" id="heroName"></div><div class="bar"><div class="fill hp" id="heroHp"></div><div class="hptext" id="heroHpText">0/0</div></div><div class="enemy-combat-info hero-combat-info"><span class="combat-badge hero-hit"><svg class="combat-svg" viewBox="0 0 24 24" fill="none"><polygon points="21,3 19.5,2 9.5,12 12,14.5 22,4.5" fill="#fde68a"/><path d="M7.5 10.5 L13.5 16.5" stroke="#fde68a" stroke-width="2.5" stroke-linecap="round"/><line x1="10.5" y1="13.5" x2="4.5" y2="19.5" stroke="#fde68a" stroke-width="2.5" stroke-linecap="round"/><circle cx="3.5" cy="20.5" r="1.5" fill="#fde68a"/></svg><span id="heroDamageInfo">—</span></span><span class="combat-badge hero-timer"><svg class="combat-svg" viewBox="0 0 24 24"><path d="M6 2v2h2v4.2a6 6 0 0 0 2.3 4.8A6 6 0 0 0 8 17.8V22H6v2h12v-2h-2v-4.2a6 6 0 0 0-2.3-4.8A6 6 0 0 0 16 8.2V4h2V2H6zm4 2h4v4.2c0 1.3-.6 2.5-1.6 3.3L12 11.8l-.4-.3C10.6 10.7 10 9.5 10 8.2V4z" fill="#60a5fa"/></svg><span id="heroTimerInfo">—</span></span></div></div><div class="barbox foe" id="enemyBox"><div class="name" id="enemyName">—</div><div class="bar"><div class="fill ehp" id="enemyHp"></div><div class="hptext" id="enemyHpText">0/0</div></div><div class="enemy-combat-info"><span class="combat-badge enemy-hit"><svg class="combat-svg" viewBox="0 0 24 24" fill="none"><polygon points="21,3 19.5,2 9.5,12 12,14.5 22,4.5" fill="#fb7185"/><path d="M7.5 10.5 L13.5 16.5" stroke="#fb7185" stroke-width="2.5" stroke-linecap="round"/><line x1="10.5" y1="13.5" x2="4.5" y2="19.5" stroke="#fb7185" stroke-width="2.5" stroke-linecap="round"/><circle cx="3.5" cy="20.5" r="1.5" fill="#fb7185"/></svg><span id="enemyDamageInfo">—</span></span><span class="combat-badge enemy-timer"><svg class="combat-svg" viewBox="0 0 24 24"><path d="M6 2v2h2v4.2a6 6 0 0 0 2.3 4.8A6 6 0 0 0 8 17.8V22H6v2h12v-2h-2v-4.2a6 6 0 0 0-2.3-4.8A6 6 0 0 0 16 8.2V4h2V2H6zm4 2h4v4.2c0 1.3-.6 2.5-1.6 3.3L12 11.8l-.4-.3C10.6 10.7 10 9.5 10 8.2V4z" fill="#fbbf24"/></svg><span id="enemyTimerInfo">—</span></span></div></div><div class="fighters"><img id="heroImg" class="fighter" src=""><div id="searchingIcon" class="searching-icon"><div class="search-lens-wrap"><svg class="search-lens-svg" viewBox="0 0 64 64" fill="none"><defs><linearGradient id="lensRim" x1="10" y1="10" x2="48" y2="48" gradientUnits="userSpaceOnUse"><stop stop-color="#fde047"/><stop offset="0.5" stop-color="#f59e0b"/><stop offset="1" stop-color="#b45309"/></linearGradient><linearGradient id="lensHandle" x1="38" y1="38" x2="56" y2="56" gradientUnits="userSpaceOnUse"><stop stop-color="#d97706"/><stop offset="0.7" stop-color="#78350f"/><stop offset="1" stop-color="#451a03"/></linearGradient></defs><circle cx="28" cy="28" r="18" stroke="url(#lensRim)" stroke-width="4.5" fill="rgba(59, 130, 246, 0.18)"/><path d="M41 41 L57 57" stroke="url(#lensHandle)" stroke-width="6.5" stroke-linecap="round"/><circle cx="28" cy="28" r="13" stroke="rgba(255,255,255,0.4)" stroke-width="1.5" stroke-dasharray="4 6" fill="none"/><path d="M22 18 A 12 12 0 0 1 36 28" stroke="#ffffff" stroke-width="2" stroke-linecap="round"/></svg><div class="search-radar-ping"></div></div></div><img id="enemyImg" class="fighter foe" src=""></div><button class="attack" id="attackBtn">Найти врага</button><div class="modal" id="deathModal"><div class="modalbox deathbox"><h2>Кот повержен</h2><p id="deathText"></p><div class="actions"><button id="freeDeath">Сдаться бесплатно</button><button class="primary" id="caviarRevive">Возродиться (2 <span class="icon-caviar"></span>)</button></div></div></div><div class="modal" id="bankModal"><div class="modalbox bankbox"><h2>Лавка купца: Икринки</h2><p>Икринки позволяют возрождаться в бою без потери рыбы, мгновенно открывать сундуки и покупать редкие артефакты.</p><div class="bank-grid"><div class="bank-card"><div class="bank-amount">50 <span class="icon-caviar"></span></div><div class="bank-title">Горсть икринок</div><button class="buy primary" onclick="buyCaviarPack(50, 99)">99 ₽</button></div><div class="bank-card featured"><div class="bank-badge">Выгодно</div><div class="bank-amount">150 <span class="icon-caviar"></span></div><div class="bank-title">Мешочек икринок</div><button class="buy primary" onclick="buyCaviarPack(150, 199)">199 ₽</button></div><div class="bank-card"><div class="bank-amount">450 <span class="icon-caviar"></span></div><div class="bank-title">Сундук икринок</div><button class="buy primary" onclick="buyCaviarPack(450, 499)">499 ₽</button></div></div><div class="actions" style="margin-top:10px"><button id="closeBank">Закрыть</button></div></div></div><div class="modal" id="victoryModal"><div class="modalbox deathbox victorybox"><h2>ПОБЕДА!</h2><p>Кошачий Король повержен!<br>Ты прошёл весь путь и завершил своё приключение.<br><br><b>Новая игра+ доступна!</b><br>Начни новый цикл с повышенной сложностью<br>или вернись в текущий мир и продолжи игру.<br><br><span class="victory-note">Начать Новую игру+ можно в любой момент через раздел «Возвышение».</span></p><div class="actions"><button id="victoryReturn">Вернуться</button><button class="primary" id="victoryNg">Новая игра+</button></div></div></div><div class="modal" id="settingsModal"><div class="modalbox"><h2><svg viewBox="0 0 24 24" width="22" height="22" fill="none" style="vertical-align:middle;margin-right:6px;"><path d="M12 15a3 3 0 100-6 3 3 0 000 6z" stroke="#fbbf24" stroke-width="2"/><path d="M19.4 15a1.65 1.65 0 00.33 1.82l.06.06a2 2 0 010 2.83 2 2 0 01-2.83 0l-.06-.06a1.65 1.65 0 00-1.82-.33 1.65 1.65 0 00-1 1.51V21a2 2 0 01-2 2 2 2 0 01-2-2v-.09A1.65 1.65 0 009 19.4a1.65 1.65 0 00-1.82.33l-.06.06a2 2 0 01-2.83 0 2 2 0 010-2.83l.06-.06a1.65 1.65 0 00.33-1.82 1.65 1.65 0 00-1.51-1H3a2 2 0 01-2-2 2 2 0 012-2h.09A1.65 1.65 0 004.6 9a1.65 1.65 0 00-.33-1.82l-.06-.06a2 2 0 010-2.83 2 2 0 012.83 0l.06.06a1.65 1.65 0 001.82.33H9a1.65 1.65 0 001-1.51V3a2 2 0 012-2 2 2 2 0 012 2v.09a1.65 1.65 0 001 1.51 1.65 1.65 0 001.82-.33l.06-.06a2 2 0 012.83 0 2 2 0 010 2.83l-.06.06a1.65 1.65 0 00-.33 1.82V9a1.65 1.65 0 001.51 1H21a2 2 0 012 2 2 2 0 01-2 2h-.09a1.65 1.65 0 00-1.51 1z" stroke="#fbbf24" stroke-width="2"/></svg>Настройки игры</h2><div class="settingrow"><span class="setting-label"><svg class="setting-icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M11 5L6 9H2v6h4l5 4V5z" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M15.54 8.46a5 5 0 010 7.07M19.07 4.93a10 10 0 010 14.14" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round"/></svg> Звуковые эффекты</span><button class="toggle" id="soundToggle">Включены</button></div><div class="settingrow"><span class="setting-label"><svg class="setting-icon-svg" viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M9 18V5l12-2v13M9 18a3 3 0 11-6 0 3 3 0 016 0zm12-2a3 3 0 11-6 0 3 3 0 016 0z" stroke="#cbd5e1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Фоновая музыка</span><button class="toggle" id="musicToggle">Включена</button></div><div class="actions" style="margin-top:14px"><button id="closeSettings">Закрыть</button></div></div></div></div><aside class="side"><section class="main-upgrades" id="mainUpgrades"><div class="upgrade-title"><h2>Улучшения</h2></div><div id="mainUpgradeContent"></div></section><div class="progress"><b id="progressTitle">Прогресс пути</b><div class="mini" id="progressSub"></div><div class="req" id="requirements"></div></div><div class="mini" style="margin-bottom:6px">Локации</div><div class="locs" id="locationsList"></div></aside></div></div></section>
 <section id="worldView" class="view"><div class="tabs"><button class="tab active" data-world="buildings">Постройки</button><button class="tab" data-world="heroes">Коты</button><button class="tab" data-world="tasks">Задания</button><button class="tab" data-world="daily">Бонусы</button><button class="tab" data-world="asc">Возвышение</button><button class="tab" data-world="shop">Магазин</button></div><div id="worldContent"></div></section>
 </main><nav class="bottom"><button class="nav active" data-view="battleView">Путь</button><button class="nav" data-view="worldView">Развитие</button></nav></div></div>
 <!-- UI assets:
@@ -3729,7 +4053,7 @@ function load(){try{let x=JSON.parse(localStorage.getItem('catLegendSave'));if(x
 function persist(){try{S._saveUpdatedAt=Date.now();localStorage.setItem('catLegendSave',JSON.stringify(S));}catch(e){}}
 function save(){persist();toast('💾 Прогресс сохранён')}
 function fmt(n){return Math.floor(n).toLocaleString('ru-RU')}
-function toast(t){let e=document.getElementById('toast');e.textContent=t;let scene=document.getElementById('scene'),battle=document.getElementById('battleView');if(scene&&battle&&battle.classList.contains('active')){let r=scene.getBoundingClientRect();e.style.left=(r.left+r.width/2)+'px';e.style.top=Math.max(12,r.top+18)+'px'}else{e.style.left='50%';e.style.top='14px'}e.classList.add('show');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('show'),1700)}
+function toast(t){let e=document.getElementById('toast');e.innerHTML=String(t).replace(/🔴/g,'<span class="icon-caviar"></span>');let scene=document.getElementById('scene'),battle=document.getElementById('battleView');if(scene&&battle&&battle.classList.contains('active')){let r=scene.getBoundingClientRect();e.style.left=(r.left+r.width/2)+'px';e.style.top=Math.max(12,r.top+18)+'px'}else{e.style.left='50%';e.style.top='14px'}e.classList.add('show');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('show'),1700)}
 function today(){const d=new Date();const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),day=String(d.getDate()).padStart(2,'0');return `${y}-${m}-${day}`}
 function daysBetween(a,b){const [ay,am,ad]=a.split('-').map(Number),[by,bm,bd]=b.split('-').map(Number);if(!ay||!by)return 0;return Math.round((new Date(by,bm-1,bd)-new Date(ay,am-1,ad))/86400000)}
 function updateDailyStreak(){const d=today();if(!S.daily)S.daily={day:'',claimed:false};if(!Number.isFinite(S.conditions.streak))S.conditions.streak=0;if(S.daily.day===d)return false;const prev=S.daily.day;S.daily.day=d;S.daily.claimed=false;if(!prev)S.conditions.streak=1;else S.conditions.streak=daysBetween(prev,d)===1?S.conditions.streak+1:1;return true}
@@ -3813,7 +4137,7 @@ function caviarRevive(){
   S.caviar-=2;
   S.combat.dead=false;S.combat.paused=false;S.combat.pausedRemainingMs=0;document.getElementById('game').classList.remove('death-lock');let c=calc();S.combat.heroHp=c.hp;S.combat.active=true;S.combat.searching=false;S.combat.reviveBonusUntil=Date.now()+30000;document.getElementById('deathModal').classList.remove('show');document.getElementById('combatMsg').textContent='🔥 Возрождение: урон ×1.3 на 30 сек';render();startEnemyAttacks();if(S.upgrades.autoLevel>0)runCombat();saveSoon()
 }
-function floatText(v,crit){let e=document.createElement('div');e.className='float '+(crit?'crit':'dmg');e.textContent=(crit?'💥 КРИТ ':'-')+fmt(v);let r=document.getElementById('enemyImg').getBoundingClientRect(),s=document.getElementById('scene').getBoundingClientRect();e.style.left=(r.left-s.left+r.width/2)+'px';e.style.top=(r.top-s.top+r.height*.25)+'px';document.getElementById('scene').appendChild(e);setTimeout(()=>e.remove(),800)}
+function floatText(v,crit){let e=document.createElement('div');e.className='float '+(crit?'crit':'dmg');e.textContent=(crit?'КРИТ ':'-')+fmt(v);let r=document.getElementById('enemyImg').getBoundingClientRect(),s=document.getElementById('scene').getBoundingClientRect();e.style.left=(r.left-s.left+r.width/2)+'px';e.style.top=(r.top-s.top+r.height*.25)+'px';document.getElementById('scene').appendChild(e);setTimeout(()=>e.remove(),850)}
 function positionCombatBars(){
   const scene=document.getElementById('scene');
   const fighters=document.querySelector('.fighters');
@@ -3855,7 +4179,7 @@ function positionCombatBars(){
     box.style.setProperty('width',bw+'px','important');
   }
 }
-function render(){let c=calc();document.getElementById('fish').textContent=fmt(S.fish);const cavEl=document.getElementById('caviar');if(cavEl)cavEl.textContent=fmt(S.caviar||0);document.getElementById('heroLevel').textContent=`Ур. ${S.heroLevel}`;document.getElementById('heroXpText').textContent=`XP ${fmt(S.heroXp)}/${fmt(xpNeed(S.heroLevel))}`;document.getElementById('heroXpBar').style.width=Math.max(0,Math.min(100,S.heroXp/xpNeed(S.heroLevel)*100))+'%';document.getElementById('heroHp').style.width=(Math.max(0,Math.min(100,(S.combat.heroHp||0)/c.hp*100))*0.976)+'%';document.getElementById('heroHpText').textContent=`${fmt(S.combat.heroHp||0)}/${fmt(c.hp)}`;let autoLevel=Number(S.upgrades?.autoLevel)||0,autoSec=autoLevel?getAutoAttackInterval()/1000:0;document.getElementById('heroDamageInfo').textContent=`⚔️ ${fmt(Math.round(c.dmg))}`;if(autoLevel&&S.combat.active){let remain=Math.max(0,(Number(S.combat.autoNextAttackAt)||0)-Date.now());document.getElementById('heroTimerInfo').textContent=`⏱ ${(remain/1000).toFixed(1)}`;document.getElementById('heroTimerInfo').classList.toggle('urgent',remain<=800)}else{document.getElementById('heroTimerInfo').textContent=autoLevel?`⏱ ${autoSec.toFixed(2)}`:'⏱ —';document.getElementById('heroTimerInfo').classList.remove('urgent')}let e=getEnemyData(),enemyMax=e?(Number(S.combat.enemyMax)||Number(e[4])||0):0;document.getElementById('enemyName').textContent=e?enemyDisplayName(e[0]):'';document.getElementById('enemyHp').style.width=e?(Math.max(0,Math.min(100,S.combat.enemyHp/enemyMax*100))*0.976)+'%':'0%';document.getElementById('enemyHpText').textContent=e?`${fmt(S.combat.enemyHp)}/${fmt(enemyMax)}`:'0/0';let enemyStats=getEnemyAttackStats();let enemyDamageEl=document.getElementById('enemyDamageInfo'),enemyTimerEl=document.getElementById('enemyTimerInfo');if(e&&enemyStats&&S.combat.active){enemyDamageEl.textContent=`⚔️ ${fmt(Math.round(enemyStats.damage))}`;let remain=Math.max(0,(S.combat.enemyNextAttackAt||0)-Date.now());enemyTimerEl.textContent=`⏱ ${(remain/1000).toFixed(1)}`;enemyTimerEl.classList.toggle('urgent',remain<=800)}else{enemyDamageEl.textContent='⚔️ —';enemyTimerEl.textContent='⏱ —';enemyTimerEl.classList.remove('urgent')}document.getElementById('enemyBox').style.visibility=e?'visible':'hidden';document.getElementById('enemyImg').style.visibility=e?'visible':'hidden';document.getElementById('searchingIcon').style.display=S.combat.searching&&!S.combat.active?'block':'none';let b=document.getElementById('attackBtn'),busy=S.combat.active||S.combat.searching,finalReady=S.loc===9&&reqDone(LOCS[8])&&!busy;b.disabled=!!S.combat.dead;b.textContent=S.combat.dead?'Кот повержен':(busy?'Отступить':(finalReady?'Финальная битва':'Найти врага'));b.classList.toggle('surrender',busy);document.getElementById('combatMsg').textContent=S.combat.searching&&!S.combat.active?'🔎 Ищем врага...':S.combat.active?'':'Нажмите «Найти врага»';document.getElementById('combatMsg').style.display=S.combat.active?'none':'block';setScene();requestAnimationFrame(positionCombatBars);renderMainUpgrades()}
+function render(){let c=calc();document.getElementById('fish').textContent=fmt(S.fish);const cavEl=document.getElementById('caviar');if(cavEl)cavEl.textContent=fmt(S.caviar||0);document.getElementById('heroLevel').textContent=`Ур. ${S.heroLevel}`;document.getElementById('heroXpText').textContent=`XP ${fmt(S.heroXp)}/${fmt(xpNeed(S.heroLevel))}`;document.getElementById('heroXpBar').style.width=Math.max(0,Math.min(100,S.heroXp/xpNeed(S.heroLevel)*100))+'%';document.getElementById('heroHp').style.width=Math.max(0,Math.min(100,(S.combat.heroHp||0)/c.hp*100))+'%';document.getElementById('heroHpText').textContent=`${fmt(S.combat.heroHp||0)} / ${fmt(c.hp)}`;let autoLevel=Number(S.upgrades?.autoLevel)||0,autoSec=autoLevel?getAutoAttackInterval()/1000:0;document.getElementById('heroDamageInfo').textContent=fmt(Math.round(c.dmg));if(autoLevel&&S.combat.active){let remain=Math.max(0,(Number(S.combat.autoNextAttackAt)||0)-Date.now());document.getElementById('heroTimerInfo').textContent=(remain/1000).toFixed(1);document.getElementById('heroTimerInfo').classList.toggle('urgent',remain<=800)}else{document.getElementById('heroTimerInfo').textContent=autoLevel?autoSec.toFixed(2):'—';document.getElementById('heroTimerInfo').classList.remove('urgent')}let e=getEnemyData(),enemyMax=e?(Number(S.combat.enemyMax)||Number(e[4])||0):0;document.getElementById('enemyName').textContent=e?enemyDisplayName(e[0]):'';document.getElementById('enemyHp').style.width=e?(Math.max(0,Math.min(100,S.combat.enemyHp/enemyMax*100)))+'%':'0%';document.getElementById('enemyHpText').textContent=e?`${fmt(S.combat.enemyHp)} / ${fmt(enemyMax)}`:'0 / 0';let enemyStats=getEnemyAttackStats();let enemyDamageEl=document.getElementById('enemyDamageInfo'),enemyTimerEl=document.getElementById('enemyTimerInfo');if(e&&enemyStats&&S.combat.active){enemyDamageEl.textContent=fmt(Math.round(enemyStats.damage));let remain=Math.max(0,(S.combat.enemyNextAttackAt||0)-Date.now());enemyTimerEl.textContent=(remain/1000).toFixed(1);enemyTimerEl.classList.toggle('urgent',remain<=800)}else{enemyDamageEl.textContent='—';enemyTimerEl.textContent='—';enemyTimerEl.classList.remove('urgent')}document.getElementById('enemyBox').style.visibility=e?'visible':'hidden';document.getElementById('enemyImg').style.visibility=e?'visible':'hidden';document.getElementById('searchingIcon').style.display=S.combat.searching&&!S.combat.active?'block':'none';let b=document.getElementById('attackBtn'),busy=S.combat.active||S.combat.searching,finalReady=S.loc===9&&reqDone(LOCS[8])&&!busy;b.disabled=!!S.combat.dead;b.textContent=S.combat.dead?'Кот повержен':(busy?'Отступить':(finalReady?'Финальная битва':'Найти врага'));b.classList.toggle('surrender',busy);document.getElementById('combatMsg').textContent=S.combat.searching&&!S.combat.active?'Поиск противника...':S.combat.active?'':'Нажмите «Найти врага»';document.getElementById('combatMsg').style.display=S.combat.active?'none':'block';setScene();requestAnimationFrame(positionCombatBars);renderMainUpgrades()}
 function reqDone(l){return l.req.every(([n,q])=>(S.kills[n]||0)>=q)}
 function cleanLabel(s){return String(s||'').replace(/^[^\p{L}\p{N}]+/u,'').trim()}
 function syncCompletedLocations(){if(!Array.isArray(S.completedLocations))S.completedLocations=[];let changed=false;for(const l of LOCS){if(reqDone(l)&&!S.completedLocations.includes(l.id)){S.completedLocations.push(l.id);changed=true}}return changed}
@@ -3878,9 +4202,9 @@ return `<div class="compact-upgrades">
 <div class="uitem"><div class="uhead"><span>Ловкость</span></div><div class="ulevel">Ур. ${dodgeLevel}</div><div class="ueffect">${Math.round(c0.dodge*100)}% уклон</div><button class="buy" data-upgrade="dodge" ${(S.fish<dodgeCost||dodgeLevel>=20)?'disabled':''}>${dodgeLevel>=20?'МАКС':price(dodgeCost)}</button></div>
 </div>`}
 function renderMainUpgrades(){document.getElementById('mainUpgradeContent').innerHTML=upgradeCards();bindWorld();}
-function renderWorld(){let c=document.getElementById('worldContent'),tab=document.querySelector('.tab.active')?.dataset.world||'buildings';if(tab==='asc'){let can=S.loc>=5;c.innerHTML=`<div class="ascension-bigframe world-panel"><div class="asc-big-head"><h2>Возвышение</h2><p class="asc-status ${can?'good':'danger'}">${can?'Возвышение доступно — ты достиг Города.':'Доберись до Города, чтобы открыть Возвышение.'}</p></div><div class="asc-big-content"><div class="asc-big-col reset"><h3>Сбрасывается</h3><div class="asc-list"><div>Все рыбки</div><div>Все постройки и их уровни</div><div>Прогресс пути</div><div>Уровень героя и опыт</div></div></div><div class="asc-big-col keep"><h3>Остаётся навсегда</h3><div class="asc-list"><div>Открытые коты</div><div>Бонусы от Возвышения</div><div>Предметы магазина</div><div>Все икринки</div></div></div><div class="asc-big-col bonus"><h3>Текущий бонус</h3><div class="asc-bonus-values"><div><b>+${S.asc*35}%</b><span>к рыбкам</span></div><div><b>+${S.asc*35}%</b><span>к урону</span></div></div><p>Бонусы складываются. Каждый знак даст +35% к рыбкам и урону.</p><button class="buy primary asc-btn" id="ascendBtn" ${can?'':'disabled'}>Возвыситься</button></div><div class="asc-big-col ng"><h3>Новая игра+</h3><p>Новый цикл с повышенной сложностью после полного прохождения пути.</p><p class="mini">Условия: Необходимо завершить свой путь победив Кошачьего Короля</p><button class="buy ng-action" id="ngPlusBtn" ${S.ngAvailable?'':'disabled'}>Новая игра+</button></div></div></div>`;if(can)document.getElementById('ascendBtn').onclick=ascend;if(S.ngAvailable)document.getElementById('ngPlusBtn').onclick=ngplus;return}if(tab==='buildings'){c.innerHTML='<div class="grid building-grid">'+BUILDINGS.map(b=>{let lv=S.buildings[b.id]||0,unlocked=locationPassed(b.unlock),cost=Math.round(b.base*Math.pow(b.scale,lv)),effect=b.kind==='fish'?`+${fmt(b.effect(lv+1))} рыбок/с`:`+${fmt(b.effect(lv))}% к пределу`;let canBuy=b.kind==='fish'?lv<20:lv<10;return `<div class="card building-card ${unlocked?'':'locked-card'}"><h3>${b.name}</h3><p>${b.desc}</p><div class="mini">${unlocked?`Уровень ${lv}${b.kind==='fish'?'/20':'/10'} · ${effect}`:`Откроется: ${b.unlockText}`}</div>${unlocked?`<button class="buy" data-buy="${b.id}" ${(!canBuy||S.fish<cost)?'disabled':''}>${canBuy?`Улучшить · ${fmt(cost)}`:'МАКС'}</button>`:''}</div>`}).join('')+'</div>';bindWorld();return}if(tab==='heroes'){c.innerHTML='<div class="grid">'+HEROES.map(h=>{let u=S.unlocked.includes(h.id)||h.unlock(S),sel=S.hero===h.id,prog=h.id==='ryzhik'?`${S.asc}/1`:h.id==='shadow'?`${Math.min(S.conditions.crits,100)}/100`:h.id==='baton'?`${Math.min(Math.floor(S.conditions.damageTaken),5000)}/5000`:h.id==='doctor'?`${Math.min(S.conditions.healed,5000)}/5000`:h.id==='tycoon'?`${Math.min(S.conditions.tasks,10)}/10`:h.id==='wanderer'?`${Math.min(S.conditions.streak,7)}/7`:h.id==='king'?`${S.ng?1:0}/1`:'';return `<div class="card heroCard ${u?'':'locked'}"><img src="${A}heroes/${h.img}"><div><h3>${h.name}</h3><span class="badge">${u?'Открыт':'🔒 '+prog}</span><p>${h.desc}</p><p class="good">${h.bonus}</p>${u?`<button class="buy ${sel?'selected':''}" data-hero="${h.id}">${sel?'Выбран':'Выбрать'}</button>`:''}</div></div>`}).join('')+'</div>';bindWorld();return}if(tab==='tasks'){let ids=(S.activeTasks||[0,1,2,3,4,5,6,7]).slice(0,8);while(ids.length<8){let n=(S.taskCursor||0)%TASKS.length;if(!ids.includes(n))ids.push(n);S.taskCursor=(n+1)%TASKS.length}S.activeTasks=ids;if(!S.taskProgress)S.taskProgress={};const snap=()=>Object.fromEntries(Object.keys(S.conditions).map(k=>[k,Number(S.conditions[k])||0]));ids.forEach(i=>{if(!S.taskProgress[i])S.taskProgress[i]=snap()});const taskProgress=(i)=>{const m=TASK_META[i]||['kills',1],base=Number(S.taskProgress[i]?.[m[0]])||0,cur=Math.max(0,(Number(S.conditions[m[0]])||0)-base),goal=m[1];return {cur,goal,pct:Math.min(100,cur/goal*100)}};const taskDone=i=>{const p=taskProgress(i);return p.cur>=p.goal};c.innerHTML='<div class="task-section"><div class="task-grid">'+ids.map(i=>{let t=TASKS[i],done=taskDone(i),pr=taskProgress(i),rew=t[2]||1;return `<div class="card task-card"><div class="task-main"><h3>${t[0]}</h3><div class="task-count">${Math.min(pr.cur,pr.goal)} / ${pr.goal}</div>${done?'<div class="good task-done-label">Выполнено</div>':''}</div><div class="task-bottom"><div class="reward">+${rew} 🔴 ${rew===1?'икринка':'икринки'}</div><button class="buy" data-task="${i}" ${done?'':'disabled'}>${done?'Забрать награду':'В процессе'}</button></div></div>`}).join('')+'</div></div>';bindWorld();return} 
-if(tab==='shop'){c.innerHTML='<div class="shop-grid">'+SHOP_ITEMS.map(x=>{let owned=ownedShop(x.id);return `<div class="card shop-card ${owned?'owned':''}" style="background-image:url('${A}ui/${x.img}')"><div class="shop-content"><h3>${x.name}</h3><p class="shop-effect">${x.effect}</p></div><div class="shop-action">${owned?'<button class="buy shop-owned" disabled>Надето</button>':`<div class="shop-price">${x.priceCaviar} 🔴</div><button class="buy" data-shop="${x.id}">Купить</button>`}</div></div>`}).join('')+`<div class="card shop-card shop-caviar" style="background-image:url('${A}ui/ui_bonus_chest.webp')"><div class="shop-content"><h3>Лавка купца</h3><p class="shop-effect">Пополнить запас икринок</p><div class="shop-amount" style="color:var(--gold);font-weight:900;margin-top:6px">от 99 ₽</div></div><div class="shop-action"><button class="buy" onclick="openBankModal()">Пополнить</button></div></div>`+'</div>';bindWorld();return}if(tab==='daily'){updateDailyStreak();let d=today(),streak=S.conditions.streak,claim=S.daily.day===d&&S.daily.claimed,now=Date.now(),fb=Math.max(0,S.bonus?.fishUntil-now),db=Math.max(0,S.bonus?.damageUntil-now);let streakCaviar=streak>=7?5:(streak>=4?2:1);c.innerHTML=`<div class="bonus-grid"><div class="card bonus-card" style="background-image:url('${A}ui/ui_bonus_daily.webp')"><div class="bonus-content"><h2>Ежедневная награда</h2><p>Серия входов: <b>${streak}/7</b></p></div><div class="bonus-action"><div class="bonus-gain">Сегодня: +${fmt(100+streak*50)} рыбок, +${streakCaviar} 🔴</div><button class="buy" id="dailyBtn" ${claim?'disabled':''}>${claim?'Получено':'Забрать награду'}</button></div></div><div class="card bonus-card" style="background-image:url('${A}ui/ui_bonus_chest.webp')"><div class="bonus-content"><h2>Бонусный сундук</h2></div><div class="bonus-action"><div class="bonus-gain">Случайная гора рыбок</div><button class="buy" id="chestBtn">Открыть за 6 🔴</button></div></div><div class="card bonus-card" style="background-image:url('${A}ui/ui_bonus_fish.webp')"><div class="bonus-content"><h2>×2 рыбы</h2></div><div class="bonus-action"><div class="bonus-gain">${fb?`Активно ещё ${Math.ceil(fb/1000)} сек.`:'Удваивает получаемую рыбу на 10 минут'}</div><button class="buy" id="fishBoostBtn">${fb?'Продлить (4 🔴)':'Активировать (4 🔴)'}</button></div></div><div class="card bonus-card" style="background-image:url('${A}ui/ui_bonus_damage.webp')"><div class="bonus-content"><h2>×2 урона</h2></div><div class="bonus-action"><div class="bonus-gain">${db?`Активно ещё ${Math.ceil(db/1000)} сек.`:'Удваивает урон на 10 минут'}</div><button class="buy" id="damageBoostBtn">${db?'Продлить (4 🔴)':'Активировать (4 🔴)'}</button></div></div></div>`;document.getElementById('dailyBtn').onclick=()=>{updateDailyStreak();if(!S.daily.claimed){let sc=S.conditions.streak>=7?5:(S.conditions.streak>=4?2:1);let fr=100+S.conditions.streak*50;S.fish+=fr;S.caviar=(S.caviar||0)+sc;S.daily.claimed=true;toast(`Награда за ${S.conditions.streak}-й день: +${fmt(fr)} рыбок и +${sc} икринок! 🔴`);saveSoon();render();renderWorld()}};document.getElementById('chestBtn').onclick=()=>{if((S.caviar||0)<6){toast('Не хватает икринок! Нужно 6 🔴');openBankModal();return;}S.caviar-=6;let reward=Math.round((400+Math.random()*1600)*(calc().fishMul||1));S.fish+=reward;S.conditions.fishEarned+=reward;playSound('upgrade');toast(`🎁 Сундук открыт! +${fmt(reward)} рыбок`);saveSoon();render();renderWorld();};document.getElementById('fishBoostBtn').onclick=()=>{if((S.caviar||0)<4){toast('Не хватает икринок! Нужно 4 🔴');openBankModal();return;}S.caviar-=4;S.bonus.fishUntil=Math.max(Date.now(),S.bonus.fishUntil||0)+600000;playSound('upgrade');toast('🐟 ×2 рыбы на 10 минут активировано!');saveSoon();render();renderWorld();};document.getElementById('damageBoostBtn').onclick=()=>{if((S.caviar||0)<4){toast('Не хватает икринок! Нужно 4 🔴');openBankModal();return;}S.caviar-=4;S.bonus.damageUntil=Math.max(Date.now(),S.bonus.damageUntil||0)+600000;playSound('upgrade');toast('⚔️ ×2 урона на 10 минут активировано!');saveSoon();render();renderWorld();};return}bindWorld()}
-function bindWorld(){if(S.combat?.dead)return;document.querySelectorAll('[data-shop]').forEach(b=>b.onclick=()=>buyShopItem(b.dataset.shop));document.querySelectorAll('[data-buy]').forEach(b=>b.onclick=()=>{let x=BUILDINGS.find(x=>x.id===b.dataset.buy),lv=S.buildings[x.id]||0,cost=Math.round(x.base*Math.pow(x.scale,lv));if(!locationPassed(x.unlock)||S.fish<cost||(x.kind!=='fish'&&lv>=10)||(x.kind==='fish'&&lv>=20))return;S.fish-=cost;S.buildings[x.id]=lv+1;playSound('upgrade');toast('🏗️ Постройка улучшена');saveSoon();render();renderWorld()});document.querySelectorAll('[data-upgrade]').forEach(b=>b.onclick=()=>{let type=b.dataset.upgrade,u=S.upgrades||{},c=calc();let level=type==='weapon'?(u.weaponLevel||1)-1:type==='armor'?u.armorLevel||0:type==='auto'?u.autoLevel||0:type==='autoheal'?u.autoHealLevel||0:type==='crit'?u.critLevel||0:u.dodgeLevel||0;let base={weapon:22,armor:25,auto:90,autoheal:35,crit:35,dodge:35}[type];let scale={weapon:1.245,armor:1.24,auto:1.26,autoheal:1.25,crit:1.24,dodge:1.25}[type];let cost=Math.floor(base*Math.pow(scale,level));let cap=type==='armor'?Math.floor(c.armorCap):type==='crit'?Math.round(c.critCap/.02):type==='dodge'?Math.round(c.dodgeCap/.015):type==='auto'?20:Infinity;if(S.fish<cost||(type==='armor'&&u.armorLevel>=cap)||(type==='crit'&&u.critLevel>=cap)||(type==='dodge'&&u.dodgeLevel>=cap))return;S.fish-=cost;if(type==='weapon')u.weaponLevel=(u.weaponLevel||1)+1;if(type==='armor')u.armorLevel=(u.armorLevel||0)+1;if(type==='auto'){u.autoLevel=(u.autoLevel||0)+1;u.autoEnabled=true;runCombat()}if(type==='autoheal')u.autoHealLevel=(u.autoHealLevel||0)+1;if(type==='crit')u.critLevel=(u.critLevel||0)+1;if(type==='dodge')u.dodgeLevel=(u.dodgeLevel||0)+1;playSound('upgrade');toast('⚔️ Улучшение куплено');saveSoon();render();renderMainUpgrades()});document.querySelectorAll('[data-hero]').forEach(b=>b.onclick=()=>{S.hero=b.dataset.hero;S.combat.heroHp=calc().hp;saveSoon();renderWorld();render()});document.querySelectorAll('[data-task]').forEach(b=>b.onclick=()=>{let i=+b.dataset.task;const m=TASK_META[i]||['kills',1],base=Number(S.taskProgress?.[i]?.[m[0]])||0,cur=Math.max(0,(Number(S.conditions[m[0]])||0)-base);if(cur<m[1])return;let ids=S.activeTasks||[0,1,2,3,4,5,6,7],idx=ids.indexOf(i);if(idx<0)return;let rew=TASKS[i]?.[2]||1;S.caviar=(S.caviar||0)+rew;S.conditions.tasks++;let next=(S.taskCursor!==undefined?S.taskCursor:8)%TASKS.length;while(ids.includes(next))next=(next+1)%TASKS.length;ids[idx]=next;S.taskCursor=(next+1)%TASKS.length;S.activeTasks=ids;if(!S.taskProgress)S.taskProgress={};S.taskProgress[next]=Object.fromEntries(Object.keys(S.conditions).map(k=>[k,Number(S.conditions[k])||0]));delete S.taskProgress[i];playSound('upgrade');toast(`Награда получена: +${rew} 🔴!`);saveSoon();render();renderWorld()})}
+function renderWorld(){let c=document.getElementById('worldContent'),tab=document.querySelector('.tab.active')?.dataset.world||'buildings';if(tab==='asc'){let can=S.loc>=5;c.innerHTML=`<div class="ascension-bigframe world-panel"><div class="asc-big-head"><h2>Возвышение</h2><p class="asc-status ${can?'good':'danger'}">${can?'Возвышение доступно — ты достиг Города.':'Доберись до Города, чтобы открыть Возвышение.'}</p></div><div class="asc-big-content"><div class="asc-big-col reset"><h3>Сбрасывается</h3><div class="asc-list"><div>Все рыбки</div><div>Все постройки и их уровни</div><div>Прогресс пути</div><div>Уровень героя и опыт</div></div></div><div class="asc-big-col keep"><h3>Остаётся навсегда</h3><div class="asc-list"><div>Открытые коты</div><div>Бонусы от Возвышения</div><div>Предметы магазина</div><div>Все икринки</div></div></div><div class="asc-big-col bonus"><h3>Текущий бонус</h3><div class="asc-bonus-values"><div><b>+${S.asc*35}%</b><span>к рыбкам</span></div><div><b>+${S.asc*35}%</b><span>к урону</span></div></div><p>Бонусы складываются. Каждый знак даст +35% к рыбкам и урону.</p><button class="buy primary asc-btn" id="ascendBtn" ${can?'':'disabled'}>Возвыситься</button></div><div class="asc-big-col ng"><h3>Новая игра+</h3><p>Новый цикл с повышенной сложностью после полного прохождения пути.</p><p class="mini">Условия: Необходимо завершить свой путь победив Кошачьего Короля</p><button class="buy ng-action" id="ngPlusBtn" ${S.ngAvailable?'':'disabled'}>Новая игра+</button></div></div></div>`;if(can)document.getElementById('ascendBtn').onclick=ascend;if(S.ngAvailable)document.getElementById('ngPlusBtn').onclick=ngplus;return}if(tab==='buildings'){c.innerHTML='<div class="grid building-grid">'+BUILDINGS.map(b=>{let lv=S.buildings[b.id]||0,unlocked=locationPassed(b.unlock),cost=Math.round(b.base*Math.pow(b.scale,lv)),effect=b.kind==='fish'?`+${fmt(b.effect(lv+1))} рыбок/с`:`+${fmt(b.effect(lv))}% к пределу`;let canBuy=b.kind==='fish'?lv<20:lv<10;return `<div class="card building-card ${unlocked?'':'locked-card'}"><h3>${b.name}</h3><p>${b.desc}</p><div class="mini">${unlocked?`Уровень ${lv}${b.kind==='fish'?'/20':'/10'} · ${effect}`:`Откроется: ${b.unlockText}`}</div>${unlocked?`<button class="buy" data-buy="${b.id}" ${(!canBuy||S.fish<cost)?'disabled':''}>${canBuy?`Улучшить · ${fmt(cost)}`:'МАКС'}</button>`:''}</div>`}).join('')+'</div>';bindWorld();return}if(tab==='heroes'){c.innerHTML='<div class="grid">'+HEROES.map(h=>{let u=S.unlocked.includes(h.id)||h.unlock(S),sel=S.hero===h.id,prog=h.id==='ryzhik'?`${S.asc}/1`:h.id==='shadow'?`${Math.min(S.conditions.crits,100)}/100`:h.id==='baton'?`${Math.min(Math.floor(S.conditions.damageTaken),5000)}/5000`:h.id==='doctor'?`${Math.min(Math.floor(S.conditions.healed),5000)}/5000`:h.id==='tycoon'?`${Math.min(S.conditions.tasks,10)}/10`:h.id==='wanderer'?`${Math.min(S.conditions.streak,7)}/7`:h.id==='king'?`${S.ng?1:0}/1`:'';return `<div class="card heroCard ${u?'':'locked'}"><img src="${A}heroes/${h.img}"><div><h3>${h.name}</h3><span class="badge">${u?'Открыт':'🔒 '+prog}</span><p>${h.desc}</p><p class="good">${h.bonus}</p>${u?`<button class="buy ${sel?'selected':''}" data-hero="${h.id}">${sel?'Выбран':'Выбрать'}</button>`:''}</div></div>`}).join('')+'</div>';bindWorld();return}if(tab==='tasks'){let ids=(S.activeTasks||[0,1,2,3,4,5,6,7]).slice(0,8);while(ids.length<8){let n=(S.taskCursor||0)%TASKS.length;if(!ids.includes(n))ids.push(n);S.taskCursor=(n+1)%TASKS.length}S.activeTasks=ids;if(!S.taskProgress)S.taskProgress={};const snap=()=>Object.fromEntries(Object.keys(S.conditions).map(k=>[k,Number(S.conditions[k])||0]));ids.forEach(i=>{if(!S.taskProgress[i])S.taskProgress[i]=snap()});const taskProgress=(i)=>{const m=TASK_META[i]||['kills',1],base=Number(S.taskProgress[i]?.[m[0]])||0,cur=Math.floor(Math.max(0,(Number(S.conditions[m[0]])||0)-base)),goal=Math.floor(m[1]);return {cur,goal,pct:Math.min(100,cur/goal*100)}};const taskDone=i=>{const p=taskProgress(i);return p.cur>=p.goal};c.innerHTML='<div class="task-section"><div class="task-grid">'+ids.map(i=>{let t=TASKS[i],done=taskDone(i),pr=taskProgress(i),rew=t[2]||1;return `<div class="card task-card"><div class="task-main"><h3>${t[0]}</h3><div class="task-count">${fmt(Math.min(pr.cur,pr.goal))} / ${fmt(pr.goal)}</div>${done?'<div class="good task-done-label">Выполнено</div>':''}</div><div class="task-bottom"><div class="reward">+${rew} <span class="icon-caviar"></span> ${rew===1?'икринка':'икринки'}</div><button class="buy" data-task="${i}" ${done?'':'disabled'}>${done?'Забрать награду':'В процессе'}</button></div></div>`}).join('')+'</div></div>';bindWorld();return} 
+if(tab==='shop'){c.innerHTML='<div class="shop-grid">'+SHOP_ITEMS.map(x=>{let owned=ownedShop(x.id);return `<div class="card shop-card ${owned?'owned':''}" style="background-image:url('${A}ui/${x.img}')"><div class="shop-content"><h3>${x.name}</h3><p class="shop-effect">${x.effect}</p></div><div class="shop-action">${owned?'<button class="buy shop-owned" disabled>Надето</button>':`<div class="shop-price">${x.priceCaviar} <span class="icon-caviar"></span></div><button class="buy" data-shop="${x.id}">Купить</button>`}</div></div>`}).join('')+`<div class="card shop-card shop-caviar" style="background-image:url('${A}ui/ui_bonus_chest.webp')"><div class="shop-content"><h3>Лавка купца</h3><p class="shop-effect">Пополнить запас икринок</p><div class="shop-amount" style="color:var(--gold);font-weight:900;margin-top:6px">от 99 ₽</div></div><div class="shop-action"><button class="buy" onclick="openBankModal()">Пополнить</button></div></div>`+'</div>';bindWorld();return}if(tab==='daily'){updateDailyStreak();let d=today(),streak=S.conditions.streak,claim=S.daily.day===d&&S.daily.claimed,now=Date.now(),fb=Math.max(0,S.bonus?.fishUntil-now),db=Math.max(0,S.bonus?.damageUntil-now);let streakCaviar=streak>=7?5:(streak>=4?2:1);c.innerHTML=`<div class="bonus-grid"><div class="card bonus-card" style="background-image:url('${A}ui/ui_bonus_daily.webp')"><div class="bonus-content"><h2>Ежедневная награда</h2><p>Серия входов: <b>${streak}/7</b></p></div><div class="bonus-action"><div class="bonus-gain">Сегодня: +${fmt(100+streak*50)} рыбок, +${streakCaviar} <span class="icon-caviar"></span></div><button class="buy" id="dailyBtn" ${claim?'disabled':''}>${claim?'Получено':'Забрать награду'}</button></div></div><div class="card bonus-card" style="background-image:url('${A}ui/ui_bonus_chest.webp')"><div class="bonus-content"><h2>Бонусный сундук</h2></div><div class="bonus-action"><div class="bonus-gain">Случайная гора рыбок</div><button class="buy" id="chestBtn">Открыть за 6 <span class="icon-caviar"></span></button></div></div><div class="card bonus-card" style="background-image:url('${A}ui/ui_bonus_fish.webp')"><div class="bonus-content"><h2>×2 рыбы</h2></div><div class="bonus-action"><div class="bonus-gain">${fb?`Активно ещё ${Math.ceil(fb/1000)} сек.`:'Удваивает получаемую рыбу на 10 минут'}</div><button class="buy" id="fishBoostBtn">${fb?'Продлить (4 <span class="icon-caviar"></span>)':'Активировать (4 <span class="icon-caviar"></span>)'}</button></div></div><div class="card bonus-card" style="background-image:url('${A}ui/ui_bonus_damage.webp')"><div class="bonus-content"><h2>×2 урона</h2></div><div class="bonus-action"><div class="bonus-gain">${db?`Активно ещё ${Math.ceil(db/1000)} сек.`:'Удваивает урон на 10 минут'}</div><button class="buy" id="damageBoostBtn">${db?'Продлить (4 <span class="icon-caviar"></span>)':'Активировать (4 <span class="icon-caviar"></span>)'}</button></div></div></div>`;document.getElementById('dailyBtn').onclick=()=>{updateDailyStreak();if(!S.daily.claimed){let sc=S.conditions.streak>=7?5:(S.conditions.streak>=4?2:1);let fr=100+S.conditions.streak*50;S.fish+=fr;S.caviar=(S.caviar||0)+sc;S.daily.claimed=true;toast(`Награда за ${S.conditions.streak}-й день: +${fmt(fr)} рыбок и +${sc} икринок! 🔴`);saveSoon();render();renderWorld()}};document.getElementById('chestBtn').onclick=()=>{if((S.caviar||0)<6){toast('Не хватает икринок! Нужно 6 🔴');openBankModal();return;}S.caviar-=6;let reward=Math.round((400+Math.random()*1600)*(calc().fishMul||1));S.fish+=reward;S.conditions.fishEarned+=reward;playSound('upgrade');toast(`🎁 Сундук открыт! +${fmt(reward)} рыбок`);saveSoon();render();renderWorld();};document.getElementById('fishBoostBtn').onclick=()=>{if((S.caviar||0)<4){toast('Не хватает икринок! Нужно 4 🔴');openBankModal();return;}S.caviar-=4;S.bonus.fishUntil=Math.max(Date.now(),S.bonus.fishUntil||0)+600000;playSound('upgrade');toast('🐟 ×2 рыбы на 10 минут активировано!');saveSoon();render();renderWorld();};document.getElementById('damageBoostBtn').onclick=()=>{if((S.caviar||0)<4){toast('Не хватает икринок! Нужно 4 🔴');openBankModal();return;}S.caviar-=4;S.bonus.damageUntil=Math.max(Date.now(),S.bonus.damageUntil||0)+600000;playSound('upgrade');toast('⚔️ ×2 урона на 10 минут активировано!');saveSoon();render();renderWorld();};return}bindWorld()}
+function bindWorld(){if(S.combat?.dead)return;document.querySelectorAll('[data-shop]').forEach(b=>b.onclick=()=>buyShopItem(b.dataset.shop));document.querySelectorAll('[data-buy]').forEach(b=>b.onclick=()=>{let x=BUILDINGS.find(x=>x.id===b.dataset.buy),lv=S.buildings[x.id]||0,cost=Math.round(x.base*Math.pow(x.scale,lv));if(!locationPassed(x.unlock)||S.fish<cost||(x.kind!=='fish'&&lv>=10)||(x.kind==='fish'&&lv>=20))return;S.fish-=cost;S.buildings[x.id]=lv+1;playSound('upgrade');toast('🏗️ Постройка улучшена');saveSoon();render();renderWorld()});document.querySelectorAll('[data-upgrade]').forEach(b=>b.onclick=()=>{let type=b.dataset.upgrade,u=S.upgrades||{},c=calc();let level=type==='weapon'?(u.weaponLevel||1)-1:type==='armor'?u.armorLevel||0:type==='auto'?u.autoLevel||0:type==='autoheal'?u.autoHealLevel||0:type==='crit'?u.critLevel||0:u.dodgeLevel||0;let base={weapon:22,armor:25,auto:90,autoheal:35,crit:35,dodge:35}[type];let scale={weapon:1.245,armor:1.24,auto:1.26,autoheal:1.25,crit:1.24,dodge:1.25}[type];let cost=Math.floor(base*Math.pow(scale,level));let cap=type==='armor'?Math.floor(c.armorCap):type==='crit'?Math.round(c.critCap/.02):type==='dodge'?Math.round(c.dodgeCap/.015):type==='auto'?20:Infinity;if(S.fish<cost||(type==='armor'&&u.armorLevel>=cap)||(type==='crit'&&u.critLevel>=cap)||(type==='dodge'&&u.dodgeLevel>=cap))return;S.fish-=cost;if(type==='weapon')u.weaponLevel=(u.weaponLevel||1)+1;if(type==='armor')u.armorLevel=(u.armorLevel||0)+1;if(type==='auto'){u.autoLevel=(u.autoLevel||0)+1;u.autoEnabled=true;runCombat()}if(type==='autoheal')u.autoHealLevel=(u.autoHealLevel||0)+1;if(type==='crit')u.critLevel=(u.critLevel||0)+1;if(type==='dodge')u.dodgeLevel=(u.dodgeLevel||0)+1;playSound('upgrade');toast('⚔️ Улучшение куплено');saveSoon();render();renderMainUpgrades()});document.querySelectorAll('[data-hero]').forEach(b=>b.onclick=()=>{S.hero=b.dataset.hero;S.combat.heroHp=calc().hp;saveSoon();renderWorld();render()});document.querySelectorAll('[data-task]').forEach(b=>b.onclick=()=>{let i=+b.dataset.task;const m=TASK_META[i]||['kills',1],base=Number(S.taskProgress?.[i]?.[m[0]])||0,cur=Math.floor(Math.max(0,(Number(S.conditions[m[0]])||0)-base));if(cur<m[1])return;let ids=S.activeTasks||[0,1,2,3,4,5,6,7],idx=ids.indexOf(i);if(idx<0)return;let rew=TASKS[i]?.[2]||1;S.caviar=(S.caviar||0)+rew;S.conditions.tasks++;let next=(S.taskCursor!==undefined?S.taskCursor:8)%TASKS.length;while(ids.includes(next))next=(next+1)%TASKS.length;ids[idx]=next;S.taskCursor=(next+1)%TASKS.length;S.activeTasks=ids;if(!S.taskProgress)S.taskProgress={};S.taskProgress[next]=Object.fromEntries(Object.keys(S.conditions).map(k=>[k,Number(S.conditions[k])||0]));delete S.taskProgress[i];playSound('upgrade');toast(`Награда получена: +${rew} 🔴!`);saveSoon();render();renderWorld()})}
 function checkUnlocks(){let changed=false;for(let h of HEROES){if(!S.unlocked.includes(h.id)&&h.unlock(S)){S.unlocked.push(h.id);changed=true;toast(`🐱 Открыт ${h.name}!`)}}if(changed)saveSoon()}
 function ascend(){if(S.loc<5)return;S.asc++;S.fish=0;S.loc=1;S.heroLevel=1;S.heroXp=0;S.completedLocations=[];S.kills={};S.buildings={fisher:0,thieves:0,hunters:0,forge:0};S.upgrades={weaponLevel:1,armorLevel:0,autoLevel:0,autoEnabled:false,autoHealLevel:0,critLevel:0,dodgeLevel:0};clearInterval(autoTimer);clearInterval(enemyAttackTimer);S.combat={active:false,searching:false,enemy:null,enemyHp:0,enemyMax:0,heroHp:calc().hp,reviveBonusUntil:0,enemyNextAttackAt:0,autoNextAttackAt:0};toast(`👑 Возвышение ${S.asc}! +35% рыбы и урона навсегда`);checkUnlocks();save();render()}
 function ngplus(){
@@ -4068,7 +4392,11 @@ bind();
 
   function updateMusicButton(){
     const el=document.getElementById('musicToggle');
-    if(el) el.textContent=musicEnabled()?'Включена':'Выключена';
+    if(el) {
+      const on = musicEnabled();
+      el.textContent = on ? 'Включена' : 'Выключена';
+      el.classList.toggle('active', on);
+    }
   }
 
   function startMusic(){
@@ -4086,7 +4414,10 @@ bind();
     soundOn=!!on;
     localStorage.setItem('catLegendSound',soundOn?'on':'off');
     const el=document.getElementById('soundToggle');
-    if(el) el.textContent=soundOn?'Включены':'Выключены';
+    if(el) {
+      el.textContent = soundOn ? 'Включены' : 'Выключены';
+      el.classList.toggle('active', soundOn);
+    }
     if(soundOn) playSound('click');
   };
 
@@ -4103,7 +4434,10 @@ bind();
   window.addEventListener('load',function(){
     updateMusicButton();
     const st=document.getElementById('soundToggle');
-    if(st) st.textContent=soundOn?'Включены':'Выключены';
+    if(st) {
+      st.textContent = soundOn ? 'Включены' : 'Выключены';
+      st.classList.toggle('active', soundOn);
+    }
     const mt=document.getElementById('musicToggle');
     if(mt) mt.onclick=function(){setMusicEnabled(!musicEnabled());};
   });
@@ -4389,6 +4723,127 @@ bind();
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',fitLandscape,{once:true});else fitLandscape();
   setTimeout(fitLandscape,250);
   setTimeout(fitLandscape,1000);
+})();
+</script>
+
+<script id="vkplay-screenshot-mode">
+(function(){
+  const urlParams = new URLSearchParams(window.location.search);
+  const shotScene = urlParams.get('shotScene') || urlParams.get('shot_scene');
+  if(!shotScene) return;
+
+  function applyScreenshotState(){
+    if(typeof S === 'undefined') return;
+
+    if(window.gameMusic) {
+      try { window.gameMusic.pause(); } catch(e){}
+    }
+
+    if(shotScene === '1'){
+      // Scene 1: Battle in Village vs Dog
+      S.loc = 1;
+      S.fish = 450; S.caviar = 25; S.heroLevel = 3; S.heroXp = 120;
+      const l = LOCS[0];
+      const e = l.en.find(x => x[0] === 'Бродячий пёс') || l.en[3];
+      S.combat.active = true;
+      S.combat.searching = false;
+      S.combat.enemy = e[0];
+      S.combat.enemyHp = 210;
+      S.combat.enemyMax = e[4];
+      S.combat.heroHp = 480;
+      if(typeof setScene === 'function') setScene();
+      const fi = document.getElementById('enemyImg');
+      if(fi){ fi.src = A + 'enemies/' + e[1]; fi.style.visibility = 'visible'; }
+      if(typeof render === 'function') render();
+      if(typeof positionCombatBars === 'function') positionCombatBars();
+    } else if(shotScene === '2'){
+      // Scene 2: Forest road battle vs Wolf
+      S.loc = 3;
+      S.completedLocations = [1, 2];
+      S.fish = 3450; S.caviar = 45; S.heroLevel = 8; S.heroXp = 240;
+      S.upgrades.weaponLevel = 6; S.upgrades.armorLevel = 4;
+      const l = LOCS[2];
+      const e = l.en.find(x => x[0] === 'Волк') || l.en[0];
+      S.combat.active = true;
+      S.combat.searching = false;
+      S.combat.enemy = e[0];
+      S.combat.enemyHp = 1350;
+      S.combat.enemyMax = e[4];
+      S.combat.heroHp = 720;
+      if(typeof setScene === 'function') setScene();
+      const fi = document.getElementById('enemyImg');
+      if(fi){ fi.src = A + 'enemies/' + e[1]; fi.style.visibility = 'visible'; }
+      if(typeof render === 'function') render();
+      if(typeof positionCombatBars === 'function') positionCombatBars();
+    } else if(shotScene === '3'){
+      // Scene 3: Palace boss fight vs Champion
+      S.loc = 9;
+      S.completedLocations = [1, 2, 3, 4, 5, 6, 7, 8];
+      S.fish = 584000; S.caviar = 120; S.heroLevel = 25; S.heroXp = 500;
+      S.upgrades.weaponLevel = 18; S.upgrades.armorLevel = 15;
+      const l = LOCS[8];
+      const e = l.en.find(x => x[0] === 'Королевский чемпион') || l.en[3];
+      S.combat.active = true;
+      S.combat.searching = false;
+      S.combat.enemy = e[0];
+      S.combat.enemyHp = 4950000;
+      S.combat.enemyMax = e[4];
+      S.combat.heroHp = 1450;
+      if(typeof setScene === 'function') setScene();
+      const fi = document.getElementById('enemyImg');
+      if(fi){ fi.src = A + 'enemies/' + e[1]; fi.style.visibility = 'visible'; }
+      if(typeof render === 'function') render();
+      if(typeof positionCombatBars === 'function') positionCombatBars();
+    } else if(shotScene === '4'){
+      // Scene 4: Heroes Roster
+      S.loc = 5;
+      S.completedLocations = [1, 2, 3, 4];
+      S.fish = 12800; S.caviar = 35; S.heroLevel = 12;
+      document.querySelector('button[data-view="worldView"]')?.click();
+      setTimeout(() => {
+        document.querySelector('button[data-world="heroes"]')?.click();
+      }, 50);
+    } else if(shotScene === '5'){
+      // Scene 5: Quests & Tasks
+      S.loc = 4;
+      S.completedLocations = [1, 2, 3];
+      S.fish = 8500; S.caviar = 30; S.heroLevel = 10;
+      document.querySelector('button[data-view="worldView"]')?.click();
+      setTimeout(() => {
+        document.querySelector('button[data-world="tasks"]')?.click();
+      }, 50);
+    } else if(shotScene === '6'){
+      // Scene 6: Bank & Caviar Shop
+      S.loc = 1;
+      S.fish = 1200; S.caviar = 15; S.heroLevel = 5;
+      if(typeof setScene === 'function') setScene();
+      if(typeof render === 'function') render();
+      if(typeof openBankModal === 'function') openBankModal();
+    } else if(shotScene === 'settings'){
+      S.loc = 1;
+      if(typeof setScene === 'function') setScene();
+      if(typeof render === 'function') render();
+      document.getElementById('settingsBtn')?.click();
+    } else if(shotScene === 'daily'){
+      document.querySelector('button[data-view="worldView"]')?.click();
+      setTimeout(() => {
+        document.querySelector('button[data-world="daily"]')?.click();
+      }, 50);
+    } else if(shotScene === 'shop'){
+      document.querySelector('button[data-view="worldView"]')?.click();
+      setTimeout(() => {
+        document.querySelector('button[data-world="shop"]')?.click();
+      }, 50);
+    } else if(shotScene === 'search'){
+      S.loc = 1;
+      S.combat = {active: false, searching: true, enemy: null, enemyHp: 0, enemyMax: 0, heroHp: 500};
+      if(typeof setScene === 'function') setScene();
+      if(typeof render === 'function') render();
+    }
+  }
+
+  window.addEventListener('load', () => setTimeout(applyScreenshotState, 150));
+  setTimeout(applyScreenshotState, 350);
 })();
 </script>
 
