@@ -4157,6 +4157,9 @@ bind();
     window.closeBankModal();
   }
 
+  window.vkPlayUid = null;
+  window.vkPlayRegistered = false;
+
   window.buyCaviarPack = function(amount, priceRub){
     if(typeof playSound==='function') playSound('click');
     window._pendingPack = amount;
@@ -4167,27 +4170,37 @@ bind();
                      window.location.search.includes('appid=');
 
     const urlParams = new URLSearchParams(window.location.search);
-    const uid = urlParams.get('uid') || undefined;
+    const uidFromUrl = urlParams.get('uid') || urlParams.get('mailru_user_id');
+    const uid = window.vkPlayUid || (uidFromUrl ? Number(uidFromUrl) : undefined);
 
-    const merchant = {
-      amount: Number(priceRub),
+    const priceNum = Number(priceRub);
+    const descText = `${amount} икринок`;
+
+    const merchantObj = {
+      amount: priceNum,
       currency: "RUB",
-      description: `${amount} икринок`,
+      description: descText,
       item_id: "caviar_" + amount,
       custom_param: "pack_" + amount
     };
-    if(uid) merchant.uid = uid;
+    if(uid) merchantObj.uid = uid;
 
     const payload = {
-      amount: Number(priceRub),
+      merchant_param: merchantObj,
+      amount: priceNum,
+      sum: priceNum,
       currency: "RUB",
-      description: `${amount} икринок`,
-      item_id: "caviar_" + amount,
-      merchant_param: merchant
+      description: descText,
+      item_id: "caviar_" + amount
     };
 
     if(window.vkPlayApi && typeof window.vkPlayApi.paymentFrame === 'function'){
       try {
+        console.log('[VK Play IAP] Вызов window.vkPlayApi.paymentFrame с параметрами:', payload);
+        // Если игрок еще не был зарегистрирован в платформе для этой игры, пробуем зарегистрировать
+        if(!window.vkPlayRegistered && typeof window.vkPlayApi.registerUser === 'function'){
+          try { window.vkPlayApi.registerUser(); } catch(re){}
+        }
         window.vkPlayApi.paymentFrame(payload);
         return;
       } catch(e){
@@ -4262,15 +4275,29 @@ bind();
             appid: appid,
             getLoginStatusCallback: function(status){
               console.log('[VK Play] getLoginStatusCallback:', status);
+              // status: 0 - не авторизован, 1 - авторизован но не в игре, 2/3 - авторизован и зарегистрирован в игре
+              if(status === 1 && window.vkPlayApi && typeof window.vkPlayApi.registerUser === 'function'){
+                console.log('[VK Play] Регистрация игрока в игре...');
+                window.vkPlayApi.registerUser();
+              } else if(status === 2 || status === 3){
+                window.vkPlayRegistered = true;
+              }
+              if(window.vkPlayApi && typeof window.vkPlayApi.userInfo === 'function'){
+                try { window.vkPlayApi.userInfo(); } catch(ue){}
+              }
             },
             userInfoCallback: function(info){
               console.log('[VK Play] userInfoCallback:', info);
+              if(info && (info.uid || info.id)){
+                window.vkPlayUid = info.uid || info.id;
+              }
             },
             userProfileCallback: function(profile){
               console.log('[VK Play] userProfileCallback:', profile);
             },
             registerUserCallback: function(info){
               console.log('[VK Play] registerUserCallback:', info);
+              window.vkPlayRegistered = true;
             },
             paymentFrameUrlCallback: function(url){
               console.log('[VK Play] paymentFrameUrlCallback:', url);
@@ -4301,6 +4328,9 @@ bind();
             console.log('[VK Play] JS API successfully connected!', api);
             try {
               if(typeof api.getLoginStatus === 'function') api.getLoginStatus();
+            } catch(e){}
+            try {
+              if(typeof api.userInfo === 'function') api.userInfo();
             } catch(e){}
           }, function(err){
             console.warn('[VK Play] Failed to init JS API:', err);
