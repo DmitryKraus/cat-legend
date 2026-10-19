@@ -1,6 +1,6 @@
 <!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
 <!-- VK Play Games SDK -->
-<script type="text/javascript" src="https://api.vkplay.ru/static/js/iframe/api.js" defer></script>
+<script type="text/javascript" src="https://vkplay.ru/app/13461964/static/mailru.core.js"></script>
 <title>Кошачья легенда: Путь короля</title><style>
 :root{--bg:#0b1020;--panel:#151e31;--panel2:#202c42;--line:#34435e;--text:#f8fafc;--muted:#9fb0c9;--gold:#fbbf24;--green:#4ade80;--red:#fb7185;--blue:#60a5fa;--violet:#c084fc}*{box-sizing:border-box;user-select:none;-webkit-user-select:none;-webkit-tap-highlight-color:transparent}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}button{font:inherit;color:inherit;border:0;cursor:pointer}img{-webkit-user-drag:none;user-select:none;-webkit-touch-callout:none;pointer-events:none}#app{height:100%;min-height:0;overflow:hidden;display:flex;justify-content:center;background:radial-gradient(circle at 50% 0,#263650,#080d18 72%)}#game{width:100vw;max-width:none;height:100%;min-height:0;max-height:100dvh;overflow:hidden;padding:8px;display:flex;flex-direction:column;gap:8px}.top{height:0;position:relative;z-index:20}.brand,.sub,.resources,.topright{display:none}.iconbtn{width:42px;height:42px;border-radius:12px;background:#111a2a;border:1px solid var(--line)}.scene-settings{position:absolute;right:14px;top:14px;z-index:15;width:42px;height:42px}.screen{flex:1;min-height:0;position:relative}.view{display:none;width:100%;height:100%;overflow:hidden;scrollbar-width:none}.view::-webkit-scrollbar{display:none}.view.active{display:block}.battlePage{height:100%;overflow:hidden}.battlePage::-webkit-scrollbar{display:none}.battle{height:100%;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:10px}.scene{position:relative;touch-action:manipulation;min-height:0;border:1px solid var(--line);border-radius:24px;overflow:hidden;background:#24334a center/cover no-repeat;box-shadow:0 20px 45px #0007}.scene:after{content:'';position:absolute;inset:auto 0 0;height:36%;background:linear-gradient(transparent,#070b14dd);pointer-events:none}.battlehud{position:absolute;right:64px;top:14px;z-index:8;display:flex;gap:7px;align-items:center}.hudpill{background:#0b1020d9;border:1px solid #ffffff22;border-radius:12px;padding:6px 10px;min-width:90px;text-align:center}.hudpill b{display:block;color:var(--gold);font-size:16px;line-height:1.1}.battlehud .hudpill{min-width:150px}.battlehud .hudxp{min-width:150px}.battlehud .hudpill b{font-size:16px}.battlehud .hudpill small{font-size:10px}.hudpill small{font-size:9px;color:var(--muted)}.hudxp{min-width:160px}.hudxp .xpbar{margin-top:4px}.scene-settings{position:absolute;right:14px;top:14px;z-index:15;width:42px;height:42px}.locbadge{position:absolute;left:14px;top:14px;z-index:5;background:#0b1020cc;border:1px solid #ffffff22;border-radius:14px;padding:8px 12px}.locbadge b{display:block}.locbadge small{color:#cbd5e1}.fighters{position:absolute;inset:92px 25px 100px;display:flex;align-items:center;justify-content:space-around;z-index:2}.fighter{width:43%;height:62%;object-fit:contain;filter:none;transition:transform .15s}.fighter.heroStrike{animation:heroStrike .18s ease-out}.fighter.foeHit{animation:foeHit .22s ease-out}@keyframes heroStrike{0%{transform:translateX(0) scale(1)}55%{transform:translateX(30px) scale(1.04)}100%{transform:translateX(0) scale(1)}}@keyframes foeHit{0%{transform:translateX(0) rotate(0)}25%{transform:translateX(-13px) rotate(-3deg)}55%{transform:translateX(11px) rotate(3deg)}100%{transform:translateX(0) rotate(0)}}.searching-icon{position:absolute;left:77%;top:50%;width:auto;text-align:center;font-size:52px;animation:searchPulse .45s ease-in-out infinite alternate;filter:drop-shadow(0 8px 8px #0008);pointer-events:none;transform:translate(-50%,-50%)}@keyframes searchPulse{from{transform:translate(-50%,-50%) translateY(8px) rotate(-12deg) scale(.9);opacity:.55}to{transform:translate(-50%,-50%) translateY(-8px) rotate(12deg) scale(1.08);opacity:1}}.hurt{filter:brightness(1.5)}.barbox{position:absolute;top:150px;width:31%;z-index:5;text-align:center}.barbox.hero{left:3%}.barbox.foe{right:3%}.name{display:inline-block;max-width:100%;padding:5px 10px;margin-bottom:6px;border-radius:10px;background:#080d18dd;border:1px solid #ffffff2a;text-shadow:0 2px 4px #000;font-size:16px;line-height:1.1}.bar{height:22px;position:relative;background:#080d18e8;border:2px solid #ffffff35;box-shadow:0 5px 12px #0008}.hptext{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:1000;color:#fff;text-shadow:0 2px 4px #000;pointer-events:none;z-index:2}.enemy-combat-info{display:flex;justify-content:center;gap:12px;align-items:center;margin-top:5px;font-size:11px;font-weight:900;text-shadow:0 2px 4px #000}.enemy-combat-info span{padding:3px 7px;border-radius:8px;background:#080d18cc;border:1px solid #ffffff18;white-space:nowrap}.enemy-combat-info .enemy-hit{color:#fb7185} .hero-combat-info .hero-hit{color:#fde68a}.hero-combat-info .hero-timer{color:#60a5fa;min-width:54px}.enemy-combat-info .enemy-timer{color:#fbbf24;min-width:54px}.enemy-combat-info .enemy-timer.urgent{color:#fb7185;transform:scale(1.06)}.name{font-weight:900;margin-bottom:5px;padding:6px 11px}.bar{height:20px;background:#080d18cc;border:1px solid #ffffff22;border-radius:99px;overflow:hidden}.fill{height:100%;transition:width .15s}.hp{background:linear-gradient(90deg,#22c55e,#86efac)}.ehp{background:linear-gradient(90deg,#ef4444,#fb7185)}.statline{font-size:11px;margin-top:4px;color:#e2e8f0}.float{position:absolute;z-index:9;font-size:25px;font-weight:1000;pointer-events:none;animation:float .8s ease-out forwards}.dmg{color:#fde68a}.crit{color:#fb7185;font-size:31px}@keyframes float{to{transform:translateY(-65px);opacity:0}}.combatmsg{position:absolute;left:50%;top:18px;transform:translateX(-50%);z-index:6;background:#0b1020b8;padding:7px 13px;border-radius:12px;font-weight:800}.attack{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);z-index:8;width:min(280px,50%);padding:13px 15px;border-radius:18px;background:linear-gradient(#fbbf24,#d97706);color:#211300;font-weight:1000;font-size:19px;box-shadow:0 8px 0 #8a4d0b,0 14px 25px #0008;touch-action:manipulation}.attack.surrender{background:linear-gradient(#fb7185,#dc2626);color:#fff;box-shadow:0 8px 0 #991b1b,0 14px 25px #0008}.attack:active{transform:translate(-50%,4px);box-shadow:0 4px 0 #8a4d0b}.side{background:linear-gradient(180deg,#172238,#111a2b);border:1px solid var(--line);border-radius:22px;padding:12px;display:flex;flex-direction:column;min-height:0}.side h3{margin:2px 0 8px}.progress{background:#0d1524;border:1px solid var(--line);border-radius:14px;padding:10px;margin-bottom:8px}.progress b{display:block}.mini{font-size:11px;color:var(--muted)}.req{margin-top:7px;display:grid;gap:4px}.reqrow{display:flex;justify-content:space-between;font-size:12px;padding:5px 7px;background:#ffffff06;border-radius:8px}.reqrow.done{color:#86efac}.locs{overflow:auto;display:grid;gap:7px;scrollbar-width:none;touch-action:none;cursor:grab;overscroll-behavior:contain}.locs.dragging{cursor:grabbing}.locs::-webkit-scrollbar{display:none}.locbtn{background:#101a2b;border:1px solid var(--line);border-radius:12px;padding:9px;text-align:left}.locbtn.active{border-color:#fbbf24;box-shadow:0 0 0 1px #fbbf2440 inset}.locbtn.locked{opacity:.5}.tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-bottom:9px}.tab{width:100%;padding:9px 13px;border-radius:12px;background:#111a2a;border:1px solid var(--line);min-width:0}.tab.active{background:#263651;border-color:#7184a8}.main-upgrades{margin-bottom:10px;background:linear-gradient(180deg,#172238,#111a2b);border:1px solid var(--line);border-radius:18px;padding:9px 10px}.upgrade-title{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:7px}.upgrade-title h2{margin:0;font-size:16px}.compact-upgrades{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px}.uitem{background:#101827;border:1px solid var(--line);border-radius:12px;padding:7px;min-width:0}.uhead{display:flex;align-items:center;gap:5px;font-weight:900;font-size:12px;white-space:nowrap;overflow:hidden}.uhead span:last-child{overflow:hidden;text-overflow:ellipsis}.ulevel{font-size:10px;color:var(--muted);margin-top:2px;white-space:nowrap}.ueffect{font-size:10px;color:#cbd5e1;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.ucost{font-size:10px;color:var(--gold);margin-top:3px}.uitem .buy{padding:7px 5px;margin-top:5px;font-size:11px}.main-upgrades .mini{font-size:10px}.xpbox{min-width:125px}.xpbar{height:6px;background:#080d18;border-radius:99px;overflow:hidden;margin-top:4px}.xpbar i{display:block;height:100%;background:linear-gradient(90deg,#60a5fa,#a78bfa)}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:9px}.card{background:linear-gradient(180deg,#18243a,#101827);border:1px solid var(--line);border-radius:16px;padding:12px}.card h3,.card h4{margin:0 0 6px}.card p{margin:5px 0;color:var(--muted);font-size:12px}.buy{width:100%;padding:10px;border-radius:11px;background:#263651;border:1px solid #50678d;font-weight:800}.buy:disabled{opacity:.4;cursor:not-allowed}.heroCard{display:flex;gap:10px;align-items:center}.heroCard img{width:82px;height:100px;object-fit:contain}.heroCard.locked img{filter:grayscale(1);opacity:.35}.badge{display:inline-block;padding:3px 7px;border-radius:8px;background:#ffffff0d;font-size:10px;color:#cbd5e1}.task{display:flex;justify-content:space-between;gap:8px;align-items:center}.reward{color:var(--gold);font-weight:900}.toast{position:fixed;left:50%;top:72px;bottom:auto;transform:translateX(-50%) translateY(-8px);z-index:1000;background:linear-gradient(180deg,#172238f7,#0b1020f7);border:1px solid #7184a8;border-radius:14px;padding:11px 17px;opacity:0;pointer-events:none;transition:opacity .18s,transform .18s;box-shadow:0 12px 30px #0009;white-space:nowrap;max-width:min(86vw,560px);overflow:hidden;text-overflow:ellipsis;font-weight:900;text-align:center}.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}.modal{position:absolute;inset:0;background:#050914c9;z-index:30;display:none;align-items:center;justify-content:center;padding:20px}.modal.show{display:flex}.modalbox{width:min(480px,100%);background:#172238;border:1px solid var(--line);border-radius:22px;padding:20px;box-shadow:0 25px 70px #000b}.modalbox h2{margin-top:0}.settingrow{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px solid #ffffff12}.toggle{padding:9px 13px;border-radius:10px;background:#263651;border:1px solid #50678d;font-weight:900}.actions{display:flex;gap:8px;flex-wrap:wrap}.actions button{flex:1;min-width:150px;padding:12px;border-radius:12px;background:#263651;border:1px solid #50678d;font-weight:900}.actions .primary{background:linear-gradient(#fbbf24,#d97706);color:#211300}.bottom{height:56px;display:flex;gap:7px}.nav{flex:1;background:#111a2a;border:1px solid var(--line);border-radius:13px;font-weight:800}.nav.active{background:#263651;border-color:#7184a8}.note{padding:12px;background:#101a2b;border:1px solid var(--line);border-radius:15px;color:#cbd5e1;font-size:12px}.danger{color:#fda4af}.good{color:#86efac}@media(max-width:850px){#game{padding:6px}.top{height:52px;grid-template-columns:1fr auto}.brand{font-size:17px}.sub{display:none}.resources{position:absolute;left:50%;transform:translateX(-50%);top:7px}.res{min-width:82px;padding:5px 8px}.res b{font-size:14px}.topright{grid-column:2}.battle{grid-template-columns:1fr;height:100%}.side{display:none}.scene{border-radius:18px}.fighters{inset:70px 8px 85px}.fighter{width:47%;height:58%}.barbox{top:58px;width:42%}.barbox.hero{left:2%}.barbox.foe{right:2%}.attack{width:70%;font-size:17px;bottom:62px}.bottom{height:50px}.nav{font-size:12px}.grid{grid-template-columns:1fr}.compact-upgrades{grid-template-columns:repeat(3,minmax(0,1fr))}.uitem{padding:6px}.upgrade-title h2{font-size:15px}.upgrade-title .mini{display:none}.modalbox{padding:15px}}
 
@@ -3519,8 +3519,99 @@ html,body{background:#21140d !important}
   .bank-card{flex-direction:row;padding:10px 12px;}
   .bank-card .buy{width:auto;min-width:85px;padding:6px 10px;}
 }
+
+/* Принудительная горизонтальная ориентация: заглушка поворота устройства */
+.rotate-device-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:9999999;
+  background:radial-gradient(circle at center,#1e2c44 0%,#080d18 90%);
+  color:#f8fafc;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  text-align:center;
+  box-sizing:border-box;
+}
+@media screen and (orientation: portrait) and (max-width: 1024px){
+  .rotate-device-overlay{
+    display:flex!important;
+  }
+}
+.rotate-device-content{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  max-width:340px;
+}
+.rotate-device-phone{
+  position:relative;
+  width:90px;
+  height:90px;
+  margin-bottom:18px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.phone-icon{
+  font-size:56px;
+  animation:rotatePhoneAnim 2.2s cubic-bezier(0.4,0,0.2,1) infinite;
+}
+.rotate-arrow{
+  position:absolute;
+  right:-6px;
+  bottom:-2px;
+  font-size:26px;
+  animation:rotateArrowAnim 2.2s ease-in-out infinite;
+}
+@keyframes rotatePhoneAnim{
+  0%{transform:rotate(0deg)}
+  35%{transform:rotate(-90deg)}
+  70%{transform:rotate(-90deg)}
+  100%{transform:rotate(0deg)}
+}
+@keyframes rotateArrowAnim{
+  0%,100%{transform:scale(1);opacity:0.8}
+  50%{transform:scale(1.2) rotate(180deg);opacity:1}
+}
+.rotate-device-content h2{
+  font-size:22px;
+  font-weight:900;
+  margin:0 0 10px 0;
+  color:var(--gold,#fbbf24);
+  text-shadow:0 2px 8px rgba(0,0,0,0.6);
+}
+.rotate-device-content p{
+  font-size:14px;
+  color:#cbd5e1;
+  margin:0 0 14px 0;
+  line-height:1.45;
+}
+.rotate-hint{
+  display:inline-block;
+  font-size:12px;
+  color:#94a3b8;
+  padding:7px 15px;
+  border-radius:99px;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.12);
+}
 </style>
 </head><body>
+
+<div id="rotateDeviceOverlay" class="rotate-device-overlay" aria-hidden="true">
+  <div class="rotate-device-content">
+    <div class="rotate-device-phone">
+      <div class="phone-icon">📱</div>
+      <div class="rotate-arrow">🔄</div>
+    </div>
+    <h2>Поверните устройство</h2>
+    <p>«Кошачья легенда» рассчитана на горизонтальный (альбомный) экран.</p>
+    <div class="rotate-hint">Поверните телефон горизонтально для игры 📲</div>
+  </div>
+</div>
 
 <div id="app"><div id="game"><header class="top"></header><div class="toast" id="toast"></div><main class="screen">
 <section id="battleView" class="view active"><div class="battlePage"><div class="battle"><div class="scene" id="scene"><button class="iconbtn scene-settings" id="settingsBtn" aria-label="Настройки"></button><div class="battlehud"><div class="hudpill" id="fishPill"><b class="fish-value"><span id="fish">0</span></b><small>рыбки</small></div><div class="hudpill hudcaviar" id="caviarPill"><b class="caviar-value"><span class="caviar-icon">🔴</span><span id="caviar">0</span><button class="caviar-plus" id="openBankBtn" title="Пополнить икринки">+</button></b><small>икринки</small></div><div class="hudpill hudxp"><b id="heroLevel">Ур. 1</b><small id="heroXpText">XP 0/100</small><div class="xpbar"><i id="heroXpBar" style="width:0%"></i></div></div></div><div class="locbadge"><b id="locName"></b><small id="locHint"></small></div><div class="combatmsg" id="combatMsg">Нажмите «Найти врага»</div><div class="barbox hero"><div class="name" id="heroName"></div><div class="bar"><div class="fill hp" id="heroHp"></div><div class="hptext" id="heroHpText">0/0</div></div><div class="enemy-combat-info hero-combat-info"><span class="hero-hit" id="heroDamageInfo">⚔️ —</span><span class="hero-timer" id="heroTimerInfo">⏱ —</span></div></div><div class="barbox foe" id="enemyBox"><div class="name" id="enemyName">—</div><div class="bar"><div class="fill ehp" id="enemyHp"></div><div class="hptext" id="enemyHpText">0/0</div></div><div class="enemy-combat-info"><span class="enemy-hit" id="enemyDamageInfo">⚔️ —</span><span class="enemy-timer" id="enemyTimerInfo">⏱ —</span></div></div><div class="fighters"><img id="heroImg" class="fighter" src=""><div id="searchingIcon" class="searching-icon">🔎</div><img id="enemyImg" class="fighter foe" src=""></div><button class="attack" id="attackBtn">Найти врага</button><div class="modal" id="deathModal"><div class="modalbox deathbox"><h2>Кот повержен</h2><p id="deathText"></p><div class="actions"><button id="freeDeath">Сдаться бесплатно</button><button class="primary" id="caviarRevive">Возродиться (2 🔴)</button></div></div></div><div class="modal" id="bankModal"><div class="modalbox bankbox"><h2>Лавка купца: Икринки</h2><p>Икринки позволяют возрождаться в бою без потери рыбы, мгновенно открывать сундуки и покупать редкие артефакты.</p><div class="bank-grid"><div class="bank-card"><div class="bank-amount">50 🔴</div><div class="bank-title">Горсть икринок</div><button class="buy primary" onclick="buyCaviarPack(50, 99)">99 ₽</button></div><div class="bank-card featured"><div class="bank-badge">Выгодно</div><div class="bank-amount">150 🔴</div><div class="bank-title">Мешочек икринок</div><button class="buy primary" onclick="buyCaviarPack(150, 199)">199 ₽</button></div><div class="bank-card"><div class="bank-amount">450 🔴</div><div class="bank-title">Сундук икринок</div><button class="buy primary" onclick="buyCaviarPack(450, 499)">499 ₽</button></div></div><div class="actions" style="margin-top:10px"><button id="closeBank">Закрыть</button></div></div></div><div class="modal" id="victoryModal"><div class="modalbox deathbox victorybox"><h2>ПОБЕДА!</h2><p>Кошачий Король повержен!<br>Ты прошёл весь путь и завершил своё приключение.<br><br><b>Новая игра+ доступна!</b><br>Начни новый цикл с повышенной сложностью<br>или вернись в текущий мир и продолжи игру.<br><br><span class="victory-note">Начать Новую игру+ можно в любой момент через раздел «Возвышение».</span></p><div class="actions"><button id="victoryReturn">Вернуться</button><button class="primary" id="victoryNg">Новая игра+</button></div></div></div><div class="modal" id="settingsModal"><div class="modalbox"><h2>⚙️ Настройки</h2><div class="settingrow"><span>🔊 Звуки</span><button class="toggle" id="soundToggle">Включены</button></div>
@@ -4071,42 +4162,55 @@ bind();
     window._pendingPack = amount;
     console.log(`[VK Play IAP] Запрос покупки: ${amount} икринок за ${priceRub} ₽`);
 
-    if(window.vkPlayApi){
-      const itemData = {
-        service_id: 'caviar_' + amount,
-        item: 'caviar_' + amount,
-        service_name: amount + ' икринок',
-        name: amount + ' икринок',
-        amount: priceRub,
-        currency: 'RUB'
-      };
+    const inIframe = (window.self !== window.top) || 
+                     window.location.search.includes('sign=') || 
+                     window.location.search.includes('appid=');
 
+    const catalogIds = { 50: "1", 150: "2", 450: "3" };
+    const catId = catalogIds[amount] || "1";
+
+    const paymentPayload = {
+      "ids": catId,
+      "merchant_param": {
+        "amount": Number(priceRub),
+        "currency": "RUB",
+        "description": `${amount} черной икры`,
+        "item_id": "caviar_" + amount,
+        "custom_param": "pack_" + amount
+      }
+    };
+
+    if(window.vkPlayApi){
+      if(typeof window.vkPlayApi.paymentFrameItem === 'function'){
+        try {
+          window.vkPlayApi.paymentFrameItem(paymentPayload);
+          return;
+        } catch(errItem){
+          console.warn('[VK Play IAP] paymentFrameItem fallback:', errItem);
+        }
+      }
       if(typeof window.vkPlayApi.paymentFrame === 'function'){
         try {
-          window.vkPlayApi.paymentFrame(itemData, function(res){
-            if(res && (res.status === 'ok' || res.status === 'success' || res.paid || res.action === 'payment_received')){
-              grantCaviar(amount);
-              window._pendingPack = null;
-            } else {
-              console.log('[VK Play IAP] Оплата отменена или не завершена', res);
-            }
-          });
+          window.vkPlayApi.paymentFrame(paymentPayload);
           return;
         } catch(e){
           console.warn('[VK Play IAP] paymentFrame error:', e);
-        }
-      } else if(typeof window.vkPlayApi.showPaymentFrame === 'function'){
-        try {
-          window.vkPlayApi.showPaymentFrame(itemData);
+          if(typeof toast === 'function') toast('Ошибка вызова платежного окна VK Play');
           return;
-        } catch(e){
-          console.warn('[VK Play IAP] showPaymentFrame error:', e);
         }
       }
     }
 
-    // Тестовый режим (локальный запуск или запуск без активного фрейма платежей)
-    console.log('[VK Play IAP] Тестовый режим: начисление в предпросмотре');
+    // Если игра открыта внутри VK Play, но API еще подключается
+    if(inIframe){
+      if(typeof toast === 'function') toast('Подключение к платежной системе VK Play... Повторите через 2 секунды.');
+      console.warn('[VK Play IAP] Ожидание готовности VK Play API...');
+      return;
+    }
+
+    // Режим разработчика (только при локальном запуске вне VK Play)
+    console.log('[VK Play IAP] Режим разработчика (вне VK Play): мгновенное тестовое начисление');
+    if(typeof toast === 'function') toast(`[Тест вне VK Play]: начислено +${amount} икры`);
     grantCaviar(amount);
     window._pendingPack = null;
   };
@@ -4157,30 +4261,53 @@ bind();
     function connectIframeApi(){
       if(typeof window.iframeApi === 'function' && !window.vkPlayApi){
         try {
-          const appid = (new URLSearchParams(window.location.search)).get('appid') || undefined;
-          window.iframeApi({
+          const appid = Number((new URLSearchParams(window.location.search)).get('appid')) || 13461964;
+          const callbacks = {
             appid: appid,
-            onReady: function(api){
-              window.vkPlayApi = api;
-              console.log('[VK Play] API ready', api);
+            getLoginStatusCallback: function(status){
+              console.log('[VK Play] getLoginStatusCallback:', status);
             },
-            onError: function(err){
-              console.warn('[VK Play] API error:', err);
+            userInfoCallback: function(info){
+              console.log('[VK Play] userInfoCallback:', info);
             },
-            onPaymentFrameClosed: function(data){
-              console.log('[VK Play] payment frame closed', data);
-              if(data && (data.status === 'ok' || data.status === 'success' || data.paid) && window._pendingPack){
-                grantCaviar(window._pendingPack);
-                window._pendingPack = null;
-              }
+            userProfileCallback: function(profile){
+              console.log('[VK Play] userProfileCallback:', profile);
             },
-            onPaymentReceived: function(data){
-              console.log('[VK Play] payment received', data);
+            registerUserCallback: function(info){
+              console.log('[VK Play] registerUserCallback:', info);
+            },
+            paymentFrameUrlCallback: function(url){
+              console.log('[VK Play] paymentFrameUrlCallback:', url);
+            },
+            getAuthTokenCallback: function(token){},
+            paymentReceivedCallback: function(data){
+              console.log('[VK Play] paymentReceivedCallback:', data);
               if(window._pendingPack){
-                grantCaviar(window._pendingPack);
+                const granted = window._pendingPack;
                 window._pendingPack = null;
+                grantCaviar(granted);
+                if(typeof toast === 'function') toast(`🎉 Оплата успешна! Начислено +${granted} икринок! 🔴`);
               }
-            }
+            },
+            paymentWindowClosedCallback: function(){
+              console.log('[VK Play] paymentWindowClosedCallback');
+              setTimeout(function(){
+                window._pendingPack = null;
+              }, 1200);
+            },
+            userConfirmCallback: function(){},
+            paymentFrameItem: function(object){},
+            getGameInventoryItems: function(){}
+          };
+
+          window.iframeApi(callbacks).then(function(api){
+            window.vkPlayApi = api;
+            console.log('[VK Play] JS API successfully connected!', api);
+            try {
+              if(typeof api.getLoginStatus === 'function') api.getLoginStatus();
+            } catch(e){}
+          }, function(err){
+            console.warn('[VK Play] Failed to init JS API:', err);
           });
         } catch(e){
           console.warn('[VK Play] Init exception:', e);
@@ -4190,7 +4317,17 @@ bind();
 
     connectIframeApi();
     window.addEventListener('load', connectIframeApi, { once: true });
-    setTimeout(connectIframeApi, 1000);
+    setTimeout(connectIframeApi, 500);
+    setTimeout(connectIframeApi, 1500);
+
+    function tryLockLandscape(){
+      try {
+        if(screen.orientation && typeof screen.orientation.lock === 'function'){
+          screen.orientation.lock('landscape').catch(function(){});
+        }
+      } catch(e){}
+    }
+    window.addEventListener('pointerdown', tryLockLandscape, { passive: true });
 
     if(typeof render === 'function') render();
     if(typeof resumeCombatAfterLoad === 'function') resumeCombatAfterLoad();
