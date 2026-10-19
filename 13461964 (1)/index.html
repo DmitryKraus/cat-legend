@@ -4166,38 +4166,34 @@ bind();
                      window.location.search.includes('sign=') || 
                      window.location.search.includes('appid=');
 
-    const catalogIds = { 50: "1", 150: "2", 450: "3" };
-    const catId = catalogIds[amount] || "1";
+    const urlParams = new URLSearchParams(window.location.search);
+    const uid = urlParams.get('uid') || undefined;
 
-    const paymentPayload = {
-      "ids": catId,
-      "merchant_param": {
-        "amount": Number(priceRub),
-        "currency": "RUB",
-        "description": `${amount} черной икры`,
-        "item_id": "caviar_" + amount,
-        "custom_param": "pack_" + amount
-      }
+    const merchant = {
+      amount: Number(priceRub),
+      currency: "RUB",
+      description: `${amount} икринок`,
+      item_id: "caviar_" + amount,
+      custom_param: "pack_" + amount
+    };
+    if(uid) merchant.uid = uid;
+
+    const payload = {
+      amount: Number(priceRub),
+      currency: "RUB",
+      description: `${amount} икринок`,
+      item_id: "caviar_" + amount,
+      merchant_param: merchant
     };
 
-    if(window.vkPlayApi){
-      if(typeof window.vkPlayApi.paymentFrameItem === 'function'){
-        try {
-          window.vkPlayApi.paymentFrameItem(paymentPayload);
-          return;
-        } catch(errItem){
-          console.warn('[VK Play IAP] paymentFrameItem fallback:', errItem);
-        }
-      }
-      if(typeof window.vkPlayApi.paymentFrame === 'function'){
-        try {
-          window.vkPlayApi.paymentFrame(paymentPayload);
-          return;
-        } catch(e){
-          console.warn('[VK Play IAP] paymentFrame error:', e);
-          if(typeof toast === 'function') toast('Ошибка вызова платежного окна VK Play');
-          return;
-        }
+    if(window.vkPlayApi && typeof window.vkPlayApi.paymentFrame === 'function'){
+      try {
+        window.vkPlayApi.paymentFrame(payload);
+        return;
+      } catch(e){
+        console.warn('[VK Play IAP] paymentFrame error:', e);
+        if(typeof toast === 'function') toast('Ошибка вызова платежного окна VK Play');
+        return;
       }
     }
 
